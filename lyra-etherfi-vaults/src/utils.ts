@@ -35,9 +35,12 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
 export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUserSnapshot | undefined, newSnapshot: LyraVaultUserSnapshot | undefined) {
     if (!lastSnapshot || !newSnapshot) return;
 
+    if (lastSnapshot.vaultBalance.isZero()) return;
+
+    console.log("Found last snapshot with non zero balance for ", lastSnapshot.owner, lastSnapshot.vaultAddress)
     const elapsedDays = (Number(newSnapshot.timestampMilli) - Number(lastSnapshot.timestampMilli)) / MILLISECONDS_PER_DAY
-    const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY
-    const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY
+    const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
+    const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
     ctx.eventLogger.emit("point_update", {
         account: lastSnapshot.owner,
         vaultAddress: lastSnapshot.vaultAddress,

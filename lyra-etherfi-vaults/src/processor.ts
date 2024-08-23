@@ -35,9 +35,9 @@ ERC20Processor.bind(
     try {
       const promises = [];
       for (const snapshot of userSnapshots) {
-        promises.push(async () => {
-          await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
-        });
+        promises.push(
+          updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
+        );
       }
       await Promise.all(promises);
     } catch (e) {

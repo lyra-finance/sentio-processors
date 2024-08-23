@@ -29,7 +29,7 @@ ERC20Processor.bind(
   // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
   // attach to weETHC_MAINNET as it's the oldest vault
   .onTimeInterval(async (_, ctx) => {
-    const userSnapshots: LyraVaultUserSnapshot = await ctx.store.list(LyraVaultUserSnapshot, []);
+    const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
     console.log("on time interval get ", JSON.stringify(userSnapshots));
 
     try {
@@ -46,7 +46,7 @@ ERC20Processor.bind(
   },
     60,
     60 * 24
-  ) // what does this backfill param mean? 
+  )
 
 
 ERC20Processor.bind(

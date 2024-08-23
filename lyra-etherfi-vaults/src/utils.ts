@@ -14,6 +14,8 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
     const vaultTokenContractView = erc20.getERC20Contract(EthChainId.ETHEREUM, vaultTokenAddress)
     let currentBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
 
+    let oldLyraVaultUserSnapshot = await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
+
     let newLyraVaultUserSnapshot = new LyraVaultUserSnapshot(
         {
             id: `${owner}-${vaultTokenAddress}`,
@@ -27,7 +29,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
 
     await ctx.store.upsert(newLyraVaultUserSnapshot)
 
-    return [await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`), newLyraVaultUserSnapshot]
+    return [oldLyraVaultUserSnapshot, newLyraVaultUserSnapshot]
 }
 
 export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUserSnapshot | undefined, newSnapshot: LyraVaultUserSnapshot | undefined) {

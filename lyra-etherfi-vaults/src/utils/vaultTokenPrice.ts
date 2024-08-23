@@ -7,7 +7,7 @@ import { BigDecimal } from "@sentio/sdk"
 export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string) {
     // This is taken exclusively from the Lyra Chain
     const vaultTokenContract = getLyraVaultTokenContractOnContext(ctx, vaultTokenAddress)
-    const shareToUnderlying = (await vaultTokenContract.getSharesValue(1e18)).scaleDown(18)
+    const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000")).scaleDown(18)
     const nowMs = BigInt(ctx.timestamp.getTime())
 
     ctx.store.upsert(new LyraVaultTokenPrice({

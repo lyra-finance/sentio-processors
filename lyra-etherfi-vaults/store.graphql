@@ -1,0 +1,8 @@
+type LyraVaultUserSnapshot @entity {
+    id: String!
+    owner: String!
+    vaultAddress: String!
+    timestampMilli: BigInt!
+    vaultBalance: BigDecimal!
+    weETHEffectiveBalance: BigDecimal!
+}

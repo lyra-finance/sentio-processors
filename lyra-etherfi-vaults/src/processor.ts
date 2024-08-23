@@ -2,7 +2,7 @@ import { BaseContext, Counter } from '@sentio/sdk'
 import { EthChainId, EthContext, isNullAddress } from '@sentio/sdk/eth'
 import { ERC20Processor, erc20 } from '@sentio/sdk/eth/builtin'
 import { weETHBULL_MAINNET, weETHC_MAINNET, weETHCS_MAINNET } from '../src/config.js'
-import { LyraVaultUserSnapshot } from './schema/store.js'
+import { LyraVaultUserSnapshot } from '../src/schema/store.js'
 import { emitUserPointUpdate, updateLyraVaultUserSnapshot, updateUserSnapshotAndEmitPointUpdate } from './utils.js'
 
 /////////////////

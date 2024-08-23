@@ -1,6 +1,6 @@
 import { EthChainId } from '@sentio/sdk/eth'
 import { ERC20Processor } from '@sentio/sdk/eth/builtin'
-import { weETHBULL_MAINNET, weETHC_MAINNET, weETHCS_MAINNET } from '../src/config.js'
+import { weETHBULL_ARBITRUM, weETHBULL_MAINNET, weETHC_ARBITRUM, weETHC_MAINNET, weETHCS_ARBITRUM, weETHCS_MAINNET } from '../src/config.js'
 import { LyraVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils.js'
 
@@ -32,19 +32,19 @@ ERC20Processor.bind(
     console.log(`Got ${userSnapshots.length} snapshots onTimeInterval`);
 
     try {
-      // const promises = [];
+      const promises = [];
       for (const snapshot of userSnapshots) {
-        // promises.push(
-        await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
-        // );
+        promises.push(
+          await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
+        );
       }
-      // await Promise.all(promises);
+      await Promise.all(promises);
     } catch (e) {
       console.log("onTimeInterval error", e.message, ctx.timestamp);
     }
   },
     60,
-    60 * 24
+    60 * 4 // backfill at 4 hour intervals
   )
 
 
@@ -59,6 +59,33 @@ ERC20Processor.bind(
 
 ERC20Processor.bind(
   { address: weETHBULL_MAINNET, network: EthChainId.ETHEREUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
+  })
+
+ERC20Processor.bind(
+  { address: weETHC_ARBITRUM, network: EthChainId.ARBITRUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
+  })
+
+ERC20Processor.bind(
+  { address: weETHCS_ARBITRUM, network: EthChainId.ARBITRUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
+  })
+
+ERC20Processor.bind(
+  { address: weETHBULL_ARBITRUM, network: EthChainId.ARBITRUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {

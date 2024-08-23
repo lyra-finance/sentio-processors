@@ -1,9 +1,8 @@
-import { BaseContext, Counter } from '@sentio/sdk'
-import { EthChainId, EthContext, isNullAddress } from '@sentio/sdk/eth'
-import { ERC20Processor, erc20 } from '@sentio/sdk/eth/builtin'
+import { EthChainId } from '@sentio/sdk/eth'
+import { ERC20Processor } from '@sentio/sdk/eth/builtin'
 import { weETHBULL_MAINNET, weETHC_MAINNET, weETHCS_MAINNET } from '../src/config.js'
 import { LyraVaultUserSnapshot } from '../src/schema/store.js'
-import { emitUserPointUpdate, updateLyraVaultUserSnapshot, updateUserSnapshotAndEmitPointUpdate } from './utils.js'
+import { updateUserSnapshotAndEmitPointUpdate } from './utils.js'
 
 /////////////////
 // Methodology //
@@ -15,7 +14,7 @@ import { emitUserPointUpdate, updateLyraVaultUserSnapshot, updateUserSnapshotAnd
 // - At every time interval keep track of `LyraVaultTokenPrice` price in terms of LBTC / dollars (TODO: Lyra chain not supported yet, assume 1:1)
 
 // Events
-// 2. At every transfer event or time interval, we emit a `position_snapshot` event which returns the latest vault balances and effective LBTC balance per user
+// 2. At every transfer event or time interval, we emit a `position_snapshot` event which returns the latest vault balances and effective LBTC balance per user (TODO: TBD if Lombard needs this)
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
 
 ERC20Processor.bind(
@@ -30,16 +29,16 @@ ERC20Processor.bind(
   // attach to weETHC_MAINNET as it's the oldest vault
   .onTimeInterval(async (_, ctx) => {
     const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
-    console.log("on time interval get ", JSON.stringify(userSnapshots));
+    console.log(`Got ${userSnapshots.length} snapshots onTimeInterval`);
 
     try {
-      const promises = [];
+      // const promises = [];
       for (const snapshot of userSnapshots) {
-        promises.push(
-          updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
-        );
+        // promises.push(
+        await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
+        // );
       }
-      await Promise.all(promises);
+      // await Promise.all(promises);
     } catch (e) {
       console.log("onTimeInterval error", e.message, ctx.timestamp);
     }

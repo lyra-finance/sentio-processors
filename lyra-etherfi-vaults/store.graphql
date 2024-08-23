@@ -1,5 +1,5 @@
 type LyraVaultUserSnapshot @entity {
-    id: String!
+    id: ID!
     owner: String!
     vaultAddress: String!
     timestampMilli: BigInt!

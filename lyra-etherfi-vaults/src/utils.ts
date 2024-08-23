@@ -11,12 +11,24 @@ export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaul
 export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAddress: string, owner: string): Promise<[LyraVaultUserSnapshot?, LyraVaultUserSnapshot?]> {
     if (isNullAddress(owner)) return [undefined, undefined];
 
-    const vaultTokenContractView = erc20.getERC20Contract(EthChainId.ETHEREUM, vaultTokenAddress)
+    const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)
     let currentBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
 
-    let oldLyraVaultUserSnapshot = await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
+    let lastSnapshot = await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
 
-    let newLyraVaultUserSnapshot = new LyraVaultUserSnapshot(
+    if (lastSnapshot) {
+        // deep clone to avoid mutation
+        lastSnapshot = new LyraVaultUserSnapshot({
+            id: lastSnapshot.id,
+            owner: lastSnapshot.owner,
+            vaultAddress: lastSnapshot.vaultAddress,
+            timestampMilli: lastSnapshot.timestampMilli,
+            vaultBalance: lastSnapshot.vaultBalance,
+            weETHEffectiveBalance: lastSnapshot.weETHEffectiveBalance
+        })
+    }
+
+    let newSnapshot = new LyraVaultUserSnapshot(
         {
             id: `${owner}-${vaultTokenAddress}`,
             owner: owner,
@@ -27,9 +39,9 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
         }
     )
 
-    await ctx.store.upsert(newLyraVaultUserSnapshot)
+    await ctx.store.upsert(newSnapshot)
 
-    return [oldLyraVaultUserSnapshot, newLyraVaultUserSnapshot]
+    return [lastSnapshot, newSnapshot]
 }
 
 export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUserSnapshot | undefined, newSnapshot: LyraVaultUserSnapshot | undefined) {
@@ -37,22 +49,28 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
 
     if (lastSnapshot.vaultBalance.isZero()) return;
 
-    console.log("Found last snapshot with non zero balance for ", lastSnapshot.owner, lastSnapshot.vaultAddress)
     const elapsedDays = (Number(newSnapshot.timestampMilli) - Number(lastSnapshot.timestampMilli)) / MILLISECONDS_PER_DAY
     const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
     const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
+    console.log("Emitting point update", {
+        account: lastSnapshot.owner,
+        lastTimestampMs: lastSnapshot.timestampMilli,
+        lastVaultBalance: lastSnapshot.vaultBalance.toString(),
+        newTimestampMs: newSnapshot.timestampMilli,
+        newVaultBalance: newSnapshot.vaultBalance.toString(),
+    });
     ctx.eventLogger.emit("point_update", {
         account: lastSnapshot.owner,
         vaultAddress: lastSnapshot.vaultAddress,
         earnedEtherfiPoints: earnedEtherfiPoints,
         earnedEigenlayerPoints: earnedEigenlayerPoints,
         // last snapshot
-        lastTimestampMs: Number(lastSnapshot.timestampMilli),
-        lastVaultBalance: lastSnapshot.vaultBalance.toString(),
-        lastweETHEffectiveBalance: lastSnapshot.weETHEffectiveBalance.toString(),
+        lastTimestampMs: lastSnapshot.timestampMilli,
+        lastVaultBalance: lastSnapshot.vaultBalance,
+        lastweETHEffectiveBalance: lastSnapshot.weETHEffectiveBalance,
         // new snapshot
-        newTimestampMs: Number(newSnapshot.timestampMilli),
-        newVaultBalance: newSnapshot.vaultBalance.toString(),
-        newweETHEffectiveBalance: newSnapshot.weETHEffectiveBalance.toString(),
+        newTimestampMs: newSnapshot.timestampMilli,
+        newVaultBalance: newSnapshot.vaultBalance,
+        newweETHEffectiveBalance: newSnapshot.weETHEffectiveBalance,
     });
 }

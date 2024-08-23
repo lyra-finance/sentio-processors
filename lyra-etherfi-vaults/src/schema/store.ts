@@ -16,8 +16,8 @@ import { DatabaseSchema } from '@sentio/sdk'
 export class LyraVaultUserSnapshot extends AbstractEntity  {
 
 	@Required
-	@Column("String")
-	id: String
+	@Column("ID")
+	id: ID
 
 	@Required
 	@Column("String")
@@ -43,7 +43,7 @@ export class LyraVaultUserSnapshot extends AbstractEntity  {
 
 
 const source = `type LyraVaultUserSnapshot @entity {
-    id: String!
+    id: ID!
     owner: String!
     vaultAddress: String!
     timestampMilli: BigInt!

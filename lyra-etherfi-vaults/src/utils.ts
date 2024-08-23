@@ -22,7 +22,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
             id: lastSnapshot.id,
             owner: lastSnapshot.owner,
             vaultAddress: lastSnapshot.vaultAddress,
-            timestampMilli: lastSnapshot.timestampMilli,
+            timestampMs: lastSnapshot.timestampMs,
             vaultBalance: lastSnapshot.vaultBalance,
             weETHEffectiveBalance: lastSnapshot.weETHEffectiveBalance
         })
@@ -33,7 +33,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
             id: `${owner}-${vaultTokenAddress}`,
             owner: owner,
             vaultAddress: vaultTokenAddress,
-            timestampMilli: BigInt(ctx.timestamp.getTime()),
+            timestampMs: BigInt(ctx.timestamp.getTime()),
             vaultBalance: currentBalance,
             weETHEffectiveBalance: currentBalance // for now assumes 1:1 weETH - weETH<LYRA_VAULT>
         }
@@ -49,14 +49,14 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
 
     if (lastSnapshot.vaultBalance.isZero()) return;
 
-    const elapsedDays = (Number(newSnapshot.timestampMilli) - Number(lastSnapshot.timestampMilli)) / MILLISECONDS_PER_DAY
+    const elapsedDays = (Number(newSnapshot.timestampMs) - Number(lastSnapshot.timestampMs)) / MILLISECONDS_PER_DAY
     const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
     const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
     console.log("Emitting point update", {
         account: lastSnapshot.owner,
-        lastTimestampMs: lastSnapshot.timestampMilli,
+        lastTimestampMs: lastSnapshot.timestampMs,
         lastVaultBalance: lastSnapshot.vaultBalance.toString(),
-        newTimestampMs: newSnapshot.timestampMilli,
+        newTimestampMs: newSnapshot.timestampMs,
         newVaultBalance: newSnapshot.vaultBalance.toString(),
     });
     ctx.eventLogger.emit("point_update", {
@@ -65,12 +65,16 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
         earnedEtherfiPoints: earnedEtherfiPoints,
         earnedEigenlayerPoints: earnedEigenlayerPoints,
         // last snapshot
-        lastTimestampMs: lastSnapshot.timestampMilli,
+        lastTimestampMs: lastSnapshot.timestampMs,
         lastVaultBalance: lastSnapshot.vaultBalance,
         lastweETHEffectiveBalance: lastSnapshot.weETHEffectiveBalance,
         // new snapshot
-        newTimestampMs: newSnapshot.timestampMilli,
+        newTimestampMs: newSnapshot.timestampMs,
         newVaultBalance: newSnapshot.vaultBalance,
         newweETHEffectiveBalance: newSnapshot.weETHEffectiveBalance,
     });
+}
+
+export function saveVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string, price: number) {
+    ///
 }

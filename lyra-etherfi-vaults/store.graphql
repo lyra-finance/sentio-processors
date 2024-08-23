@@ -2,7 +2,14 @@ type LyraVaultUserSnapshot @entity {
     id: ID!
     owner: String!
     vaultAddress: String!
-    timestampMilli: BigInt!
+    timestampMs: BigInt!
     vaultBalance: BigDecimal!
     weETHEffectiveBalance: BigDecimal!
+}
+
+type LyraVaultTokenPrice @entity {
+    id: ID!
+    vaultAddress: String!
+    timestampMs: BigInt!
+    vaultToUnderlying: BigDecimal!
 }

@@ -29,7 +29,7 @@ export class LyraVaultUserSnapshot extends AbstractEntity  {
 
 	@Required
 	@Column("BigInt")
-	timestampMilli: BigInt
+	timestampMs: BigInt
 
 	@Required
 	@Column("BigDecimal")
@@ -41,18 +41,47 @@ export class LyraVaultUserSnapshot extends AbstractEntity  {
   constructor(data: Partial<LyraVaultUserSnapshot>) {super()}
 }
 
+@Entity("LyraVaultTokenPrice")
+export class LyraVaultTokenPrice extends AbstractEntity  {
+
+	@Required
+	@Column("ID")
+	id: ID
+
+	@Required
+	@Column("String")
+	vaultAddress: String
+
+	@Required
+	@Column("BigInt")
+	timestampMs: BigInt
+
+	@Required
+	@Column("BigDecimal")
+	vaultToUnderlying: BigDecimal
+  constructor(data: Partial<LyraVaultTokenPrice>) {super()}
+}
+
 
 const source = `type LyraVaultUserSnapshot @entity {
     id: ID!
     owner: String!
     vaultAddress: String!
-    timestampMilli: BigInt!
+    timestampMs: BigInt!
     vaultBalance: BigDecimal!
     weETHEffectiveBalance: BigDecimal!
+}
+
+type LyraVaultTokenPrice @entity {
+    id: ID!
+    vaultAddress: String!
+    timestampMs: BigInt!
+    vaultToUnderlying: BigDecimal!
 }`
 DatabaseSchema.register({
   source,
   entities: {
-    "LyraVaultUserSnapshot": LyraVaultUserSnapshot
+    "LyraVaultUserSnapshot": LyraVaultUserSnapshot,
+		"LyraVaultTokenPrice": LyraVaultTokenPrice
   }
 })

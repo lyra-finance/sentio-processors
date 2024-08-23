@@ -34,7 +34,7 @@ export class LyraVaultUserSnapshot extends AbstractEntity {
 
     @Required
     @Column("BigDecimal")
-    lbtcEffectiveBalance: BigDecimal
+    weETHEffectiveBalance: BigDecimal
 
     constructor(data: Partial<LyraVaultUserSnapshot>) { super() }
 }
@@ -46,7 +46,7 @@ const source = `type LyraVaultUserSnapshot @entity {
   vaultAddress: String!
   timestampMilli: BigInt!
   vaultBalance: BigDecimal!
-  lbtcEffectiveBalance: BigDecimal!
+  weETHEffectiveBalance: BigDecimal!
 }`
 DatabaseSchema.register({
     source,

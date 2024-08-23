@@ -1,11 +1,9 @@
 import { BaseContext, Counter } from '@sentio/sdk'
 import { EthChainId, EthContext, isNullAddress } from '@sentio/sdk/eth'
 import { ERC20Processor, erc20 } from '@sentio/sdk/eth/builtin'
-import { weETHC_MAINNET, weETHCS_MAINNET } from '../src/config.js'
-import { token } from "@sentio/sdk/utils"
+import { weETHBULL_MAINNET, weETHC_MAINNET, weETHCS_MAINNET } from '../src/config.js'
 import { LyraVaultUserSnapshot } from './schema/store.js'
-
-const tokenCounter = Counter.register('token')
+import { emitUserPointUpdate, updateLyraVaultUserSnapshot, updateUserSnapshotAndEmitPointUpdate } from './utils.js'
 
 /////////////////
 // Methodology //
@@ -24,9 +22,11 @@ ERC20Processor.bind(
   { address: weETHC_MAINNET, network: EthChainId.ETHEREUM }
 )
   .onEventTransfer(async (event, ctx) => {
-    await updateLyraVaultUserSnapshot(ctx, event.address, event.args.from)
-    await updateLyraVaultUserSnapshot(ctx, event.address, event.args.to)
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
   })
+  // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
   .onTimeInterval(async (_, ctx) => {
     const userSnapshots = await ctx.store.list(LyraVaultUserSnapshot, []);
     console.log("on time interval get ", JSON.stringify(userSnapshots));
@@ -34,9 +34,9 @@ ERC20Processor.bind(
     try {
       const promises = [];
       for (const snapshot of userSnapshots) {
-        promises.push(
-          updateLyraVaultUserSnapshot(ctx, snapshot.vaultAddress, snapshot.owner)
-        );
+        promises.push(async () => {
+          await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
+        });
       }
       await Promise.all(promises);
     } catch (e) {
@@ -47,24 +47,21 @@ ERC20Processor.bind(
     60 * 24
   ) // what does this backfill param mean? 
 
-// async function handleEvent
 
-async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAddress: string, owner: string) {
-  if (isNullAddress(owner)) return;
-
-  const vaultTokenContractView = erc20.getERC20Contract(EthChainId.ETHEREUM, vaultTokenAddress)
-  let currentBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
-
-  let latestLyraVaultUserSnapshot = new LyraVaultUserSnapshot(
-    {
-      id: `${owner}-${vaultTokenAddress}`,
-      owner: owner,
-      vaultAddress: vaultTokenAddress,
-      timestampMilli: BigInt(ctx.timestamp.getTime()),
-      vaultBalance: currentBalance,
-      lbtcEffectiveBalance: currentBalance // for now assumes 1:1 weETH - weETH<LYRA_VAULT>
+ERC20Processor.bind(
+  { address: weETHCS_MAINNET, network: EthChainId.ETHEREUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
     }
-  )
+  })
 
-  await ctx.store.upsert(latestLyraVaultUserSnapshot)
-}
+ERC20Processor.bind(
+  { address: weETHBULL_MAINNET, network: EthChainId.ETHEREUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
+  })

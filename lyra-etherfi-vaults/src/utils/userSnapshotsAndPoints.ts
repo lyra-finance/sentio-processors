@@ -1,7 +1,9 @@
 import { EthChainId, EthContext, isNullAddress } from "@sentio/sdk/eth";
 import { erc20 } from "@sentio/sdk/eth/builtin";
-import { LyraVaultUserSnapshot } from "./schema/store.js";
-import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, MILLISECONDS_PER_DAY } from "./config.js";
+import { LyraVaultTokenPrice, LyraVaultUserSnapshot } from "../schema/store.js";
+import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, MILLISECONDS_PER_DAY } from "../config.js";
+import { getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js";
+import { toUnderlyingBalance } from "./vaultTokenPrice.js";
 
 export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultTokenAddress: string, owner: string) {
     let [oldSnapshot, newSnapshot] = await updateLyraVaultUserSnapshot(ctx, vaultTokenAddress, owner)
@@ -12,7 +14,9 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
     if (isNullAddress(owner)) return [undefined, undefined];
 
     const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)
-    let currentBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
+    let currentTimestampMs = BigInt(ctx.timestamp.getTime())
+    let currentShareBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
+    let underlyingBalance = await toUnderlyingBalance(ctx, vaultTokenAddress, currentShareBalance, currentTimestampMs)
 
     let lastSnapshot = await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
 
@@ -33,9 +37,9 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
             id: `${owner}-${vaultTokenAddress}`,
             owner: owner,
             vaultAddress: vaultTokenAddress,
-            timestampMs: BigInt(ctx.timestamp.getTime()),
-            vaultBalance: currentBalance,
-            weETHEffectiveBalance: currentBalance // for now assumes 1:1 weETH - weETH<LYRA_VAULT>
+            timestampMs: currentTimestampMs,
+            vaultBalance: currentShareBalance,
+            weETHEffectiveBalance: underlyingBalance
         }
     )
 
@@ -73,8 +77,4 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
         newVaultBalance: newSnapshot.vaultBalance,
         newweETHEffectiveBalance: newSnapshot.weETHEffectiveBalance,
     });
-}
-
-export function saveVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string, price: number) {
-    ///
 }

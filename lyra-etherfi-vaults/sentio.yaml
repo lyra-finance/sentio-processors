@@ -1,5 +1,5 @@
 project: lyra-etherfi-vaults
 
 networkOverrides: 
-  - chain: 200901 # overriding BITLAYER into Lyra Chain
+  - chain: '200901' # overriding BITLAYER into Lyra Chain
     host: "https://rpc.lyra.finance"

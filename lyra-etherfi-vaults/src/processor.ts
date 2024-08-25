@@ -1,6 +1,6 @@
 import { EthChainId } from '@sentio/sdk/eth'
 import { ERC20Processor } from '@sentio/sdk/eth/builtin'
-import { weETHBULL_ARBITRUM, weETHBULL_LYRACHAIN, weETHBULL_MAINNET, weETHC_ARBITRUM, weETHC_LYRACHAIN, weETHC_MAINNET, weETHCS_ARBITRUM, weETHCS_LYRACHAIN, weETHCS_MAINNET } from '../src/config.js'
+import { LYRA_VAULTS } from '../src/config.js'
 import { LyraVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils/userSnapshotsAndPoints.js'
 import { LyraVaultTokenProcessor } from './types/eth/lyravaulttoken.js'
@@ -25,7 +25,7 @@ import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
 ///////////////////
 
 ERC20Processor.bind(
-  { address: weETHC_MAINNET, network: EthChainId.ETHEREUM }
+  { address: LYRA_VAULTS.WETHC.mainnet, network: EthChainId.ETHEREUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
@@ -55,7 +55,7 @@ ERC20Processor.bind(
   )
 
 ERC20Processor.bind(
-  { address: weETHCS_MAINNET, network: EthChainId.ETHEREUM }
+  { address: LYRA_VAULTS.WETHCS.mainnet, network: EthChainId.ETHEREUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
@@ -64,7 +64,7 @@ ERC20Processor.bind(
   })
 
 ERC20Processor.bind(
-  { address: weETHBULL_MAINNET, network: EthChainId.ETHEREUM }
+  { address: LYRA_VAULTS.WETHBULL.mainnet, network: EthChainId.ETHEREUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
@@ -72,21 +72,13 @@ ERC20Processor.bind(
     }
   })
 
-ERC20Processor.bind(
-  { address: weETHC_ARBITRUM, network: EthChainId.ARBITRUM }
-)
-  .onEventTransfer(async (event, ctx) => {
-    for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
-    }
-  })
 
 ////////////////////
 // Arbitrum Binds //
 ////////////////////
 
 ERC20Processor.bind(
-  { address: weETHCS_ARBITRUM, network: EthChainId.ARBITRUM }
+  { address: LYRA_VAULTS.WETHC.arb, network: EthChainId.ARBITRUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
@@ -95,7 +87,16 @@ ERC20Processor.bind(
   })
 
 ERC20Processor.bind(
-  { address: weETHBULL_ARBITRUM, network: EthChainId.ARBITRUM }
+  { address: LYRA_VAULTS.WETHCS.arb, network: EthChainId.ARBITRUM }
+)
+  .onEventTransfer(async (event, ctx) => {
+    for (const user of [event.args.from, event.args.to]) {
+      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+    }
+  })
+
+ERC20Processor.bind(
+  { address: LYRA_VAULTS.WETHBULL.arb, network: EthChainId.ARBITRUM }
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
@@ -110,30 +111,30 @@ ERC20Processor.bind(
 
 // NOTE: Overriding BITLAYER as LYRA CHAIN in sentio.yaml
 LyraVaultTokenProcessor.bind(
-  { address: weETHC_LYRACHAIN, network: EthChainId.BITLAYER }
+  { address: LYRA_VAULTS.WETHC.lyra, network: EthChainId.BITLAYER }
 )
   .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address)
+    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
   },
     60 * 24,
     60 * 24
   )
 
 LyraVaultTokenProcessor.bind(
-  { address: weETHCS_LYRACHAIN, network: EthChainId.BITLAYER }
+  { address: LYRA_VAULTS.WETHCS.lyra, network: EthChainId.BITLAYER }
 )
   .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address)
+    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)
   },
     60 * 24,
     60 * 24
   )
 
 LyraVaultTokenProcessor.bind(
-  { address: weETHBULL_LYRACHAIN, network: EthChainId.BITLAYER }
+  { address: LYRA_VAULTS.WETHBULL.lyra, network: EthChainId.BITLAYER }
 )
   .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address)
+    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHBULL.predepositUpgradeTimestampMs)
   },
     60 * 24,
     60 * 24

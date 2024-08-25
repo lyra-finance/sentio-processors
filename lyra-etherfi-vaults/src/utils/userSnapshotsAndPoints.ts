@@ -4,6 +4,7 @@ import { LyraVaultTokenPrice, LyraVaultUserSnapshot } from "../schema/store.js";
 import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, MILLISECONDS_PER_DAY } from "../config.js";
 import { getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js";
 import { toUnderlyingBalance } from "./vaultTokenPrice.js";
+import { getAddress } from "ethers";
 
 export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultTokenAddress: string, owner: string) {
     let [oldSnapshot, newSnapshot] = await updateLyraVaultUserSnapshot(ctx, vaultTokenAddress, owner)
@@ -11,6 +12,8 @@ export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaul
 }
 
 export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAddress: string, owner: string): Promise<[LyraVaultUserSnapshot?, LyraVaultUserSnapshot?]> {
+    vaultTokenAddress = getAddress(vaultTokenAddress)
+
     if (isNullAddress(owner)) return [undefined, undefined];
 
     const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)

@@ -3,12 +3,26 @@ import { LyraVaultTokenPrice } from "../schema/store.js"
 import { getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js"
 import { MILLISECONDS_PER_DAY } from "../config.js"
 import { BigDecimal } from "@sentio/sdk"
+import { getAddress } from "ethers"
 
-export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string) {
+export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string, predepositUpgradeTimestampMs: number | undefined) {
+    console.log("Getting token price on timestamp", ctx.timestamp.getTime())
+    const nowMs = BigInt(ctx.timestamp.getTime())
+    vaultTokenAddress = getAddress(vaultTokenAddress)
+
+    // Skip saving if Pre-Deposit Upgrade not yet enabled
+    console.log(`${vaultTokenAddress}, ${nowMs}, ${predepositUpgradeTimestampMs}`)
+    if (predepositUpgradeTimestampMs && nowMs < BigInt(predepositUpgradeTimestampMs)) {
+        console.log(`Skipping token price save at time ${nowMs} for ${vaultTokenAddress} as it's before pre-deposit upgrade`)
+        return
+    } else {
+        console.log(`${vaultTokenAddress}, ${nowMs}, ${predepositUpgradeTimestampMs}`)
+    }
+
     // This is taken exclusively from the Lyra Chain
     const vaultTokenContract = getLyraVaultTokenContractOnContext(ctx, vaultTokenAddress)
+    vaultTokenContract.address = vaultTokenAddress
     const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000")).scaleDown(18)
-    const nowMs = BigInt(ctx.timestamp.getTime())
 
     ctx.store.upsert(new LyraVaultTokenPrice({
         id: `${vaultTokenAddress}-${nowMs}`,
@@ -19,6 +33,8 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddr
 }
 
 export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string, vaultBalance: BigDecimal, snapshotTimestampMs: bigint): Promise<BigDecimal> {
+    vaultAddress = getAddress(vaultAddress)
+
     // Gets closest vault token price +/- 1 day
     const iterator = ctx.store.listIterator(LyraVaultTokenPrice, [
         { field: "vaultAddress", op: "=", value: vaultAddress },

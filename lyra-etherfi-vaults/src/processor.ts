@@ -29,20 +29,19 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHC", ctx.address, user)
     }
   })
   // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
   // attach to weETHC_MAINNET as it's the oldest vault
   .onTimeInterval(async (_, ctx) => {
     const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
-    console.log(`Got ${userSnapshots.length} snapshots onTimeInterval`);
 
     try {
       const promises = [];
       for (const snapshot of userSnapshots) {
         promises.push(
-          await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultAddress, snapshot.owner)
+          await updateUserSnapshotAndEmitPointUpdate(ctx, snapshot.vaultName, snapshot.vaultAddress, snapshot.owner)
         );
       }
       await Promise.all(promises);
@@ -59,7 +58,7 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHCS", ctx.address, user)
     }
   })
 
@@ -68,7 +67,7 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHBULL", ctx.address, user)
     }
   })
 
@@ -82,7 +81,7 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHC", ctx.address, user)
     }
   })
 
@@ -91,7 +90,7 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHCS", ctx.address, user)
     }
   })
 
@@ -100,7 +99,7 @@ ERC20Processor.bind(
 )
   .onEventTransfer(async (event, ctx) => {
     for (const user of [event.args.from, event.args.to]) {
-      await updateUserSnapshotAndEmitPointUpdate(ctx, ctx.address, user)
+      await updateUserSnapshotAndEmitPointUpdate(ctx, "WETHBULL", ctx.address, user)
     }
   })
 

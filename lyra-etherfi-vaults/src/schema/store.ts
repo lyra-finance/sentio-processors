@@ -25,6 +25,10 @@ export class LyraVaultUserSnapshot extends AbstractEntity  {
 
 	@Required
 	@Column("String")
+	vaultName: String
+
+	@Required
+	@Column("String")
 	vaultAddress: String
 
 	@Required
@@ -66,6 +70,7 @@ export class LyraVaultTokenPrice extends AbstractEntity  {
 const source = `type LyraVaultUserSnapshot @entity {
     id: ID!
     owner: String!
+    vaultName: String!
     vaultAddress: String!
     timestampMs: BigInt!
     vaultBalance: BigDecimal!

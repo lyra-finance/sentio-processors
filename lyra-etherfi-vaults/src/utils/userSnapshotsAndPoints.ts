@@ -1,17 +1,16 @@
-import { EthChainId, EthContext, isNullAddress } from "@sentio/sdk/eth";
+import { EthContext, isNullAddress } from "@sentio/sdk/eth";
 import { erc20 } from "@sentio/sdk/eth/builtin";
-import { LyraVaultTokenPrice, LyraVaultUserSnapshot } from "../schema/store.js";
-import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, MILLISECONDS_PER_DAY } from "../config.js";
-import { getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js";
+import { LyraVaultUserSnapshot } from "../schema/store.js";
+import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, LYRA_VAULTS, MILLISECONDS_PER_DAY } from "../config.js";
 import { toUnderlyingBalance } from "./vaultTokenPrice.js";
 import { getAddress } from "ethers";
 
-export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultTokenAddress: string, owner: string) {
-    let [oldSnapshot, newSnapshot] = await updateLyraVaultUserSnapshot(ctx, vaultTokenAddress, owner)
+export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultName: string, vaultTokenAddress: string, owner: string) {
+    let [oldSnapshot, newSnapshot] = await updateLyraVaultUserSnapshot(ctx, vaultName, vaultTokenAddress, owner)
     emitUserPointUpdate(ctx, oldSnapshot, newSnapshot)
 }
 
-export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAddress: string, owner: string): Promise<[LyraVaultUserSnapshot?, LyraVaultUserSnapshot?]> {
+export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultName: keyof typeof LYRA_VAULTS, vaultTokenAddress: string, owner: string): Promise<[LyraVaultUserSnapshot?, LyraVaultUserSnapshot?]> {
     vaultTokenAddress = getAddress(vaultTokenAddress)
 
     if (isNullAddress(owner)) return [undefined, undefined];
@@ -19,7 +18,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
     const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)
     let currentTimestampMs = BigInt(ctx.timestamp.getTime())
     let currentShareBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
-    let underlyingBalance = await toUnderlyingBalance(ctx, vaultTokenAddress, currentShareBalance, currentTimestampMs)
+    let underlyingBalance = await toUnderlyingBalance(ctx, LYRA_VAULTS[vaultName].lyra, currentShareBalance, currentTimestampMs)
 
     let lastSnapshot = await ctx.store.get(LyraVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
 
@@ -28,6 +27,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
         lastSnapshot = new LyraVaultUserSnapshot({
             id: lastSnapshot.id,
             owner: lastSnapshot.owner,
+            vaultName: lastSnapshot.vaultName,
             vaultAddress: lastSnapshot.vaultAddress,
             timestampMs: lastSnapshot.timestampMs,
             vaultBalance: lastSnapshot.vaultBalance,
@@ -39,6 +39,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultTokenAdd
         {
             id: `${owner}-${vaultTokenAddress}`,
             owner: owner,
+            vaultName: vaultName,
             vaultAddress: vaultTokenAddress,
             timestampMs: currentTimestampMs,
             vaultBalance: currentShareBalance,
@@ -59,13 +60,6 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
     const elapsedDays = (Number(newSnapshot.timestampMs) - Number(lastSnapshot.timestampMs)) / MILLISECONDS_PER_DAY
     const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
     const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY * lastSnapshot.weETHEffectiveBalance.toNumber()
-    console.log("Emitting point update", {
-        account: lastSnapshot.owner,
-        lastTimestampMs: lastSnapshot.timestampMs,
-        lastVaultBalance: lastSnapshot.vaultBalance.toString(),
-        newTimestampMs: newSnapshot.timestampMs,
-        newVaultBalance: newSnapshot.vaultBalance.toString(),
-    });
     ctx.eventLogger.emit("point_update", {
         account: lastSnapshot.owner,
         vaultAddress: lastSnapshot.vaultAddress,

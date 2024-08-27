@@ -73,7 +73,7 @@
     js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
-"@babel/runtime@^7.15.4", "@babel/runtime@^7.24.5":
+"@babel/runtime@^7.24.5":
   version "7.25.4"
   resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.25.4.tgz"
   integrity sha512-DSgLeL/FNcpXuzav5wfYvHCGvynXkJbn3Zvc3823AEe9nPwW9IK4UoCSS5yGymmQzN0pCPvivtgS6/8U2kkm1w==
@@ -103,10 +103,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@esbuild/aix-ppc64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.19.12.tgz#d1bc06aedb6936b3b6d313bf809a5a40387d2b7f"
-  integrity sha512-bmoCYyWdEL3wDQIVbcyzRyeKLgk2WtWLTWz1ZIAZF/EGbNOwSA6ew3PftJ1PqMiOOGu0OyFMzG53L0zqIpPeNA==
+"@esbuild/aix-ppc64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.22.0.tgz#6ff1ec509335ffbaee3fc4a5a11373d6f029b2c4"
+  integrity sha512-uvQR2crZ/zgzSHDvdygHyNI+ze9zwS8mqz0YtGXotSqvEE0UkYE9s+FZKQNTt1VtT719mfP3vHrUdCpxBNQZhQ==
 
 "@esbuild/aix-ppc64@0.23.1":
   version "0.23.1"
@@ -118,10 +118,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.17.19.tgz#bafb75234a5d3d1b690e7c2956a599345e84a2fd"
   integrity sha512-KBMWvEZooR7+kzY0BtbTQn0OAYY7CsiydT63pVEaPtVYF0hXbUaOyZog37DKxK7NF3XacBJOpYT4adIJh+avxA==
 
-"@esbuild/android-arm64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.19.12.tgz#7ad65a36cfdb7e0d429c353e00f680d737c2aed4"
-  integrity sha512-P0UVNGIienjZv3f5zq0DP3Nt2IE/3plFzuaS96vihvD0Hd6H/q4WXUGpCxD/E8YrSXfNyRPbpTq+T8ZQioSuPA==
+"@esbuild/android-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.22.0.tgz#a02ef8650fe5ce17807c9f3229a36d326d2b07ea"
+  integrity sha512-UKhPb3o2gAB/bfXcl58ZXTn1q2oVu1rEu/bKrCtmm+Nj5MKUbrOwR5WAixE2v+lk0amWuwPvhnPpBRLIGiq7ig==
 
 "@esbuild/android-arm64@0.23.1":
   version "0.23.1"
@@ -133,10 +133,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.17.19.tgz#5898f7832c2298bc7d0ab53701c57beb74d78b4d"
   integrity sha512-rIKddzqhmav7MSmoFCmDIb6e2W57geRsM94gV2l38fzhXMwq7hZoClug9USI2pFRGL06f4IOPHHpFNOkWieR8A==
 
-"@esbuild/android-arm@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.19.12.tgz#b0c26536f37776162ca8bde25e42040c203f2824"
-  integrity sha512-qg/Lj1mu3CdQlDEEiWrlC4eaPZ1KztwGJ9B6J+/6G+/4ewxJg7gqj8eVYWvao1bXrqGiW2rsBZFSX3q2lcW05w==
+"@esbuild/android-arm@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.22.0.tgz#dd26ec407db736eee0eb060195a43aa13f618013"
+  integrity sha512-PBnyP+r8vJE4ifxsWys9l+Mc2UY/yYZOpX82eoyGISXXb3dRr0M21v+s4fgRKWMFPMSf/iyowqPW/u7ScSUkjQ==
 
 "@esbuild/android-arm@0.23.1":
   version "0.23.1"
@@ -148,10 +148,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.17.19.tgz#658368ef92067866d95fb268719f98f363d13ae1"
   integrity sha512-uUTTc4xGNDT7YSArp/zbtmbhO0uEEK9/ETW29Wk1thYUJBz3IVnvgEiEwEa9IeLyvnpKrWK64Utw2bgUmDveww==
 
-"@esbuild/android-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.19.12.tgz#cb13e2211282012194d89bf3bfe7721273473b3d"
-  integrity sha512-3k7ZoUW6Q6YqhdhIaq/WZ7HwBpnFBlW905Fa4s4qWJyiNOgT1dOqDiVAQFwBH7gBRZr17gLrlFCRzF6jFh7Kew==
+"@esbuild/android-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.22.0.tgz#f02771a20be264ccc22478dcc7de8f2bde858af8"
+  integrity sha512-IjTYtvIrjhR41Ijy2dDPgYjQHWG/x/A4KXYbs1fiU3efpRdoxMChK3oEZV6GPzVEzJqxFgcuBaiX1kwEvWUxSw==
 
 "@esbuild/android-x64@0.23.1":
   version "0.23.1"
@@ -163,10 +163,10 @@
   resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.17.19.tgz"
   integrity sha512-80wEoCfF/hFKM6WE1FyBHc9SfUblloAWx6FJkFWTWiCoht9Mc0ARGEM47e67W9rI09YoUxJL68WHfDRYEAvOhg==
 
-"@esbuild/darwin-arm64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.19.12.tgz"
-  integrity sha512-B6IeSgZgtEzGC42jsI+YYu9Z3HKRxp8ZT3cqhvliEHovq8HSX2YX8lNocDn79gCKJXOSaEot9MVYky7AKjCs8g==
+"@esbuild/darwin-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.22.0.tgz"
+  integrity sha512-mqt+Go4y9wRvEz81bhKd9RpHsQR1LwU8Xm6jZRUV/xpM7cIQFbFH6wBCLPTNsdELBvfoHeumud7X78jQQJv2TA==
 
 "@esbuild/darwin-arm64@0.23.1":
   version "0.23.1"
@@ -178,10 +178,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.17.19.tgz#7751d236dfe6ce136cce343dce69f52d76b7f6cb"
   integrity sha512-IJM4JJsLhRYr9xdtLytPLSH9k/oxR3boaUIYiHkAawtwNOXKE8KoU8tMvryogdcT8AU+Bflmh81Xn6Q0vTZbQw==
 
-"@esbuild/darwin-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.19.12.tgz#e37d9633246d52aecf491ee916ece709f9d5f4cd"
-  integrity sha512-hKoVkKzFiToTgn+41qGhsUJXFlIjxI/jSYeZf3ugemDYZldIXIxhvwN6erJGlX4t5h417iFuheZ7l+YVn05N3A==
+"@esbuild/darwin-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.22.0.tgz#d07b4fe501fe9985590285b2790039ed4743f86e"
+  integrity sha512-vTaTQ9OgYc3VTaWtOE5pSuDT6H3d/qSRFRfSBbnxFfzAvYoB3pqKXA0LEbi/oT8GUOEAutspfRMqPj2ezdFaMw==
 
 "@esbuild/darwin-x64@0.23.1":
   version "0.23.1"
@@ -193,10 +193,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.17.19.tgz#cacd171665dd1d500f45c167d50c6b7e539d5fd2"
   integrity sha512-pBwbc7DufluUeGdjSU5Si+P3SoMF5DQ/F/UmTSb8HXO80ZEAJmrykPyzo1IfNbAoaqw48YRpv8shwd1NoI0jcQ==
 
-"@esbuild/freebsd-arm64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.19.12.tgz#1ee4d8b682ed363b08af74d1ea2b2b4dbba76487"
-  integrity sha512-4aRvFIXmwAcDBw9AueDQ2YnGmz5L6obe5kmPT8Vd+/+x/JMVKCgdcRwH6APrbpNXsPz+K653Qg8HB/oXvXVukA==
+"@esbuild/freebsd-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.22.0.tgz#4251e0a14716116f4fa7e22d908f47408b6c2fb5"
+  integrity sha512-0e1ZgoobJzaGnR4reD7I9rYZ7ttqdh1KPvJWnquUoDJhL0rYwdneeLailBzd2/4g/U5p4e5TIHEWa68NF2hFpQ==
 
 "@esbuild/freebsd-arm64@0.23.1":
   version "0.23.1"
@@ -208,10 +208,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.17.19.tgz#0769456eee2a08b8d925d7c00b79e861cb3162e4"
   integrity sha512-4lu+n8Wk0XlajEhbEffdy2xy53dpR06SlzvhGByyg36qJw6Kpfk7cp45DR/62aPH9mtJRmIyrXAS5UWBrJT6TQ==
 
-"@esbuild/freebsd-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.19.12.tgz#37a693553d42ff77cd7126764b535fb6cc28a11c"
-  integrity sha512-EYoXZ4d8xtBoVN7CEwWY2IN4ho76xjYXqSXMNccFSx2lgqOG/1TBPW0yPx1bJZk94qu3tX0fycJeeQsKovA8gg==
+"@esbuild/freebsd-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.22.0.tgz#7dbd35616a71f8a9b61a9435c5a79d87fc0b2f1a"
+  integrity sha512-BFgyYwlCwRWyPQJtkzqq2p6pJbiiWgp0P9PNf7a5FQ1itKY4czPuOMAlFVItirSmEpRPCeImuwePNScZS0pL5Q==
 
 "@esbuild/freebsd-x64@0.23.1":
   version "0.23.1"
@@ -223,10 +223,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.17.19.tgz#38e162ecb723862c6be1c27d6389f48960b68edb"
   integrity sha512-ct1Tg3WGwd3P+oZYqic+YZF4snNl2bsnMKRkb3ozHmnM0dGWuxcPTTntAF6bOP0Sp4x0PjSF+4uHQ1xvxfRKqg==
 
-"@esbuild/linux-arm64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.19.12.tgz#be9b145985ec6c57470e0e051d887b09dddb2d4b"
-  integrity sha512-EoTjyYyLuVPfdPLsGVVVC8a0p1BFFvtpQDB/YLEhaXyf/5bczaGeN15QkR+O4S5LeJ92Tqotve7i1jn35qwvdA==
+"@esbuild/linux-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.22.0.tgz#77cded446dd0c3b723d272e0243b3d9ddb3cb46e"
+  integrity sha512-V/K2rctCUgC0PCXpN7AqT4hoazXKgIYugFGu/myk2+pfe6jTW2guz/TBwq4cZ7ESqusR/IzkcQaBkcjquuBWsw==
 
 "@esbuild/linux-arm64@0.23.1":
   version "0.23.1"
@@ -238,10 +238,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.17.19.tgz#1a2cd399c50040184a805174a6d89097d9d1559a"
   integrity sha512-cdmT3KxjlOQ/gZ2cjfrQOtmhG4HJs6hhvm3mWSRDPtZ/lP5oe8FWceS10JaSJC13GBd4eH/haHnqf7hhGNLerA==
 
-"@esbuild/linux-arm@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.19.12.tgz#207ecd982a8db95f7b5279207d0ff2331acf5eef"
-  integrity sha512-J5jPms//KhSNv+LO1S1TX1UWp1ucM6N6XuL6ITdKWElCu8wXP72l9MM0zDTzzeikVyqFE6U8YAV9/tFyj0ti+w==
+"@esbuild/linux-arm@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.22.0.tgz#6587d3e423e09766ea997229827e292e7c4acd6f"
+  integrity sha512-KEMWiA9aGuPUD4BH5yjlhElLgaRXe+Eri6gKBoDazoPBTo1BXc/e6IW5FcJO9DoL19FBeCxgONyh95hLDNepIg==
 
 "@esbuild/linux-arm@0.23.1":
   version "0.23.1"
@@ -253,10 +253,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.17.19.tgz#e28c25266b036ce1cabca3c30155222841dc035a"
   integrity sha512-w4IRhSy1VbsNxHRQpeGCHEmibqdTUx61Vc38APcsRbuVgK0OPEnQ0YD39Brymn96mOx48Y2laBQGqgZ0j9w6SQ==
 
-"@esbuild/linux-ia32@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.19.12.tgz#d0d86b5ca1562523dc284a6723293a52d5860601"
-  integrity sha512-Thsa42rrP1+UIGaWz47uydHSBOgTUnwBwNq59khgIwktK6x60Hivfbux9iNR0eHCHzOLjLMLfUMLCypBkZXMHA==
+"@esbuild/linux-ia32@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.22.0.tgz#2d06d7b4abc443e05a820ff50d4c2d98cc04c22f"
+  integrity sha512-r2ZZqkOMOrpUhzNwxI7uLAHIDwkfeqmTnrv1cjpL/rjllPWszgqmprd/om9oviKXUBpMqHbXmppvjAYgISb26Q==
 
 "@esbuild/linux-ia32@0.23.1":
   version "0.23.1"
@@ -268,10 +268,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.17.19.tgz#0f887b8bb3f90658d1a0117283e55dbd4c9dcf72"
   integrity sha512-2iAngUbBPMq439a+z//gE+9WBldoMp1s5GWsUSgqHLzLJ9WoZLZhpwWuym0u0u/4XmZ3gpHmzV84PonE+9IIdQ==
 
-"@esbuild/linux-loong64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.19.12.tgz#9a37f87fec4b8408e682b528391fa22afd952299"
-  integrity sha512-LiXdXA0s3IqRRjm6rV6XaWATScKAXjI4R4LoDlvO7+yQqFdlr1Bax62sRwkVvRIrwXxvtYEHHI4dm50jAXkuAA==
+"@esbuild/linux-loong64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.22.0.tgz#a3e7faabe9a046ac4557bc515ce0981cfe5a6e0f"
+  integrity sha512-qaowLrV/YOMAL2RfKQ4C/VaDzAuLDuylM2sd/LH+4OFirMl6CuDpRlCq4u49ZBaVV8pkI/Y+hTdiibvQRhojCA==
 
 "@esbuild/linux-loong64@0.23.1":
   version "0.23.1"
@@ -283,10 +283,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.17.19.tgz#f5d2a0b8047ea9a5d9f592a178ea054053a70289"
   integrity sha512-LKJltc4LVdMKHsrFe4MGNPp0hqDFA1Wpt3jE1gEyM3nKUvOiO//9PheZZHfYRfYl6AwdTH4aTcXSqBerX0ml4A==
 
-"@esbuild/linux-mips64el@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.19.12.tgz#4ddebd4e6eeba20b509d8e74c8e30d8ace0b89ec"
-  integrity sha512-fEnAuj5VGTanfJ07ff0gOA6IPsvrVHLVb6Lyd1g2/ed67oU1eFzL0r9WL7ZzscD+/N6i3dWumGE1Un4f7Amf+w==
+"@esbuild/linux-mips64el@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.22.0.tgz#3a2877a78f6719e5eed4cfdded5121c5ab9305a4"
+  integrity sha512-hgrezzjQTRxjkQ5k08J6rtZN5PNnkWx/Rz6Kmj9gnsdCAX1I4Dn4ZPqvFRkXo55Q3pnVQJBwbdtrTO7tMGtyVA==
 
 "@esbuild/linux-mips64el@0.23.1":
   version "0.23.1"
@@ -298,10 +298,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.17.19.tgz#876590e3acbd9fa7f57a2c7d86f83717dbbac8c7"
   integrity sha512-/c/DGybs95WXNS8y3Ti/ytqETiW7EU44MEKuCAcpPto3YjQbyK3IQVKfF6nbghD7EcLUGl0NbiL5Rt5DMhn5tg==
 
-"@esbuild/linux-ppc64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.19.12.tgz#adb67dadb73656849f63cd522f5ecb351dd8dee8"
-  integrity sha512-nYJA2/QPimDQOh1rKWedNOe3Gfc8PabU7HT3iXWtNUbRzXS9+vgB0Fjaqr//XNbd82mCxHzik2qotuI89cfixg==
+"@esbuild/linux-ppc64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.22.0.tgz#6609478066083e05cc1854a8b272daf62a7e944b"
+  integrity sha512-ewxg6FLLUio883XgSjfULEmDl3VPv/TYNnRprVAS3QeGFLdCYdx1tIudBcd7n9jIdk82v1Ajov4jx87qW7h9+g==
 
 "@esbuild/linux-ppc64@0.23.1":
   version "0.23.1"
@@ -313,10 +313,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.17.19.tgz#7f49373df463cd9f41dc34f9b2262d771688bf09"
   integrity sha512-FC3nUAWhvFoutlhAkgHf8f5HwFWUL6bYdvLc/TTuxKlvLi3+pPzdZiFKSWz/PF30TB1K19SuCxDTI5KcqASJqA==
 
-"@esbuild/linux-riscv64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.19.12.tgz#11bc0698bf0a2abf8727f1c7ace2112612c15adf"
-  integrity sha512-2MueBrlPQCw5dVJJpQdUYgeqIzDQgw3QtiAHUC4RBz9FXPrskyyU3VI1hw7C0BSKB9OduwSJ79FTCqtGMWqJHg==
+"@esbuild/linux-riscv64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.22.0.tgz#d786a89903cf98e8d34befe6a71c69562bb4ceac"
+  integrity sha512-Az5XbgSJC2lE8XK8pdcutsf9RgdafWdTpUK/+6uaDdfkviw/B4JCwAfh1qVeRWwOohwdsl4ywZrWBNWxwrPLFg==
 
 "@esbuild/linux-riscv64@0.23.1":
   version "0.23.1"
@@ -328,10 +328,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.17.19.tgz#e2afd1afcaf63afe2c7d9ceacd28ec57c77f8829"
   integrity sha512-IbFsFbxMWLuKEbH+7sTkKzL6NJmG2vRyy6K7JJo55w+8xDk7RElYn6xvXtDW8HCfoKBFK69f3pgBJSUSQPr+4Q==
 
-"@esbuild/linux-s390x@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.19.12.tgz#e86fb8ffba7c5c92ba91fc3b27ed5a70196c3cc8"
-  integrity sha512-+Pil1Nv3Umes4m3AZKqA2anfhJiVmNCYkPchwFJNEJN5QxmTs1uzyy4TvmDrCRNT2ApwSari7ZIgrPeUx4UZDg==
+"@esbuild/linux-s390x@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.22.0.tgz#a7ab13ae163307ac615dac5ce7f60a6b0a067d59"
+  integrity sha512-8j4a2ChT9+V34NNNY9c/gMldutaJFmfMacTPq4KfNKwv2fitBCLYjee7c+Vxaha2nUhPK7cXcZpJtJ3+Y7ZdVQ==
 
 "@esbuild/linux-s390x@0.23.1":
   version "0.23.1"
@@ -343,10 +343,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.17.19.tgz#8a0e9738b1635f0c53389e515ae83826dec22aa4"
   integrity sha512-68ngA9lg2H6zkZcyp22tsVt38mlhWde8l3eJLWkyLrp4HwMUr3c1s/M2t7+kHIhvMjglIBrFpncX1SzMckomGw==
 
-"@esbuild/linux-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.19.12.tgz#5f37cfdc705aea687dfe5dfbec086a05acfe9c78"
-  integrity sha512-B71g1QpxfwBvNrfyJdVDexenDIt1CiDN1TIXLbhOw0KhJzE78KIFGX6OJ9MrtC0oOqMWf+0xop4qEU8JrJTwCg==
+"@esbuild/linux-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.22.0.tgz#24949de431013354da1d8c29e53299798f8c27ef"
+  integrity sha512-JUQyOnpbAkkRFOk/AhsEemz5TfWN4FJZxVObUlnlNCbe7QBl61ZNfM4cwBXayQA6laMJMUcqLHaYQHAB6YQ95Q==
 
 "@esbuild/linux-x64@0.23.1":
   version "0.23.1"
@@ -358,15 +358,20 @@
   resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.17.19.tgz#c29fb2453c6b7ddef9a35e2c18b37bda1ae5c462"
   integrity sha512-CwFq42rXCR8TYIjIfpXCbRX0rp1jo6cPIUPSaWwzbVI4aOfX96OXY8M6KNmtPcg7QjYeDmN+DD0Wp3LaBOLf4Q==
 
-"@esbuild/netbsd-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.19.12.tgz#29da566a75324e0d0dd7e47519ba2f7ef168657b"
-  integrity sha512-3ltjQ7n1owJgFbuC61Oj++XhtzmymoCihNFgT84UAmJnxJfm4sYCiSLTXZtE00VWYpPMYc+ZQmB6xbSdVh0JWA==
+"@esbuild/netbsd-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.22.0.tgz#bc3f51c41eaab89cf5fdb09d0c633affb39cb1a1"
+  integrity sha512-11PoCoHXo4HFNbLsXuMB6bpMPWGDiw7xETji6COdJss4SQZLvcgNoeSqWtATRm10Jj1uEHiaIk4N0PiN6x4Fcg==
 
 "@esbuild/netbsd-x64@0.23.1":
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.23.1.tgz#44e743c9778d57a8ace4b72f3c6b839a3b74a653"
   integrity sha512-aevEkCNu7KlPRpYLjwmdcuNz6bDFiE7Z8XC4CPqExjTvrHugh28QzUXVOZtiYghciKUacNktqxdpymplil1beA==
+
+"@esbuild/openbsd-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-arm64/-/openbsd-arm64-0.22.0.tgz#7cb42e3a0d3da039d1a4b7ccbd0c19b0f71ae453"
+  integrity sha512-Ezlhu/YyITmXwKSB+Zu/QqD7cxrjrpiw85cc0Rbd3AWr2wsgp+dWbWOE8MqHaLW9NKMZvuL0DhbJbvzR7F6Zvg==
 
 "@esbuild/openbsd-arm64@0.23.1":
   version "0.23.1"
@@ -378,10 +383,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.17.19.tgz#95e75a391403cb10297280d524d66ce04c920691"
   integrity sha512-cnq5brJYrSZ2CF6c35eCmviIN3k3RczmHz8eYaVlNasVqsNY+JKohZU5MKmaOI+KkllCdzOKKdPs762VCPC20g==
 
-"@esbuild/openbsd-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.19.12.tgz#306c0acbdb5a99c95be98bdd1d47c916e7dc3ff0"
-  integrity sha512-RbrfTB9SWsr0kWmb9srfF+L933uMDdu9BIzdA7os2t0TXhCRjrQyCeOt6wVxr79CKD4c+p+YhCj31HBkYcXebw==
+"@esbuild/openbsd-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.22.0.tgz#194aa9915323962e9ea66c5a13ff3e1db272a683"
+  integrity sha512-ufjdW5tFJGUjlH9j/5cCE9lrwRffyZh+T4vYvoDKoYsC6IXbwaFeV/ENxeNXcxotF0P8CDzoICXVSbJaGBhkrw==
 
 "@esbuild/openbsd-x64@0.23.1":
   version "0.23.1"
@@ -393,10 +398,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.17.19.tgz#722eaf057b83c2575937d3ffe5aeb16540da7273"
   integrity sha512-vCRT7yP3zX+bKWFeP/zdS6SqdWB8OIpaRq/mbXQxTGHnIxspRtigpkUcDMlSCOejlHowLqII7K2JKevwyRP2rg==
 
-"@esbuild/sunos-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.19.12.tgz#0933eaab9af8b9b2c930236f62aae3fc593faf30"
-  integrity sha512-HKjJwRrW8uWtCQnQOz9qcU3mUZhTUQvi56Q8DPTLLB+DawoiQdjsYq+j+D3s9I8VFtDr+F9CjgXKKC4ss89IeA==
+"@esbuild/sunos-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.22.0.tgz#2be9d2459ae181ebedb6470e4469349a27c4f060"
+  integrity sha512-zY6ly/AoSmKnmNTowDJsK5ehra153/5ZhqxNLfq9NRsTTltetr+yHHcQ4RW7QDqw4JC8A1uC1YmeSfK9NRcK1w==
 
 "@esbuild/sunos-x64@0.23.1":
   version "0.23.1"
@@ -408,10 +413,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.17.19.tgz#9aa9dc074399288bdcdd283443e9aeb6b9552b6f"
   integrity sha512-yYx+8jwowUstVdorcMdNlzklLYhPxjniHWFKgRqH7IFlUEa0Umu3KuYplf1HUZZ422e3NU9F4LGb+4O0Kdcaag==
 
-"@esbuild/win32-arm64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.19.12.tgz#773bdbaa1971b36db2f6560088639ccd1e6773ae"
-  integrity sha512-URgtR1dJnmGvX864pn1B2YUYNzjmXkuJOIqG2HdU62MVS4EHpU2946OZoTMnRUHklGtJdJZ33QfzdjGACXhn1A==
+"@esbuild/win32-arm64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.22.0.tgz#6b4224f2d049c26f37026904210a4293e34c2747"
+  integrity sha512-Kml5F7tv/1Maam0pbbCrvkk9vj046dPej30kFzlhXnhuCtYYBP6FGy/cLbc5yUT1lkZznGLf2OvuvmLjscO5rw==
 
 "@esbuild/win32-arm64@0.23.1":
   version "0.23.1"
@@ -423,10 +428,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.17.19.tgz#95ad43c62ad62485e210f6299c7b2571e48d2b03"
   integrity sha512-eggDKanJszUtCdlVs0RB+h35wNlb5v4TWEkq4vZcmVt5u/HiDZrTXe2bWFQUez3RgNHwx/x4sk5++4NSSicKkw==
 
-"@esbuild/win32-ia32@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.19.12.tgz#000516cad06354cc84a73f0943a4aa690ef6fd67"
-  integrity sha512-+ZOE6pUkMOJfmxmBZElNOx72NKpIa/HFOMGzu8fqzQJ5kgf6aTGrcJaFsNiVMH4JKpMipyK+7k0n2UXN7a8YKQ==
+"@esbuild/win32-ia32@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.22.0.tgz#4a1184f6fd4a7594c4f1e68b1e649248534f7832"
+  integrity sha512-IOgwn+mYTM3RrcydP4Og5IpXh+ftN8oF+HELTXSmbWBlujuci4Qa3DTeO+LEErceisI7KUSfEIiX+WOUlpELkw==
 
 "@esbuild/win32-ia32@0.23.1":
   version "0.23.1"
@@ -438,10 +443,10 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.17.19.tgz#8cfaf2ff603e9aabb910e9c0558c26cf32744061"
   integrity sha512-lAhycmKnVOuRYNtRtatQR1LPQf2oYCkRGkSFnseDAKPl8lu5SOsK/e1sXe5a0Pc5kHIHe6P2I/ilntNv2xf3cA==
 
-"@esbuild/win32-x64@0.19.12":
-  version "0.19.12"
-  resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
-  integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
+"@esbuild/win32-x64@0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.22.0.tgz#4b83e9449a205e7d94d5368035450fc1680fe525"
+  integrity sha512-4bDHJrk2WHBXJPhy1y80X7/5b5iZTZP3LGcKIlAP1J+KqZ4zQAPMLEzftGyjjfcKbA4JDlPt/+2R/F1ZTeRgrw==
 
 "@esbuild/win32-x64@0.23.1":
   version "0.23.1"
@@ -648,34 +653,34 @@
     "@fuel-ts/utils" "0.88.1"
     type-fest "^3.1.0"
 
-"@fuel-ts/abi-coder@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/abi-coder/-/abi-coder-0.90.0.tgz"
-  integrity sha512-3/tg+xgiAEOfO3c8FGN0ql9rpcPNf8SX0XkhJFNQslkYh0hW0W+sWlas0dwTdfk/foRFCktDv3p1F/7qNSZCHQ==
+"@fuel-ts/abi-coder@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/abi-coder/-/abi-coder-0.94.1.tgz"
+  integrity sha512-4iZ0GC+3o1ZuJJW75EXA+bLsR9QogOGB+buP9xpSW+pt296Y8B3gtk3cemP0Xs14PnlnRjO7mlEB7kXLPlYTUg==
   dependencies:
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/hasher" "^0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    type-fest "^3.1.0"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/hasher" "^0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    type-fest "^4.24.0"
 
-"@fuel-ts/abi-typegen@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/abi-typegen/-/abi-typegen-0.90.0.tgz"
-  integrity sha512-8I8n/51QYfgjr8Vc2QscudCaQ/BdltDRQBHnBAJTKe8Ow54nirXh8gL5PQY2caTLJG1c7/K6r9oLMUGOmCHqPg==
+"@fuel-ts/abi-typegen@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/abi-typegen/-/abi-typegen-0.94.1.tgz"
+  integrity sha512-KJw7AIZqPwgxS9Wm6h+6Bp8qkCQhA7bxPIxZg/reEYYMpwvAW0fmCUZksMG/qDUcy1+IXLhgvQZUq8vK4ft4kw==
   dependencies:
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "^0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    "@fuel-ts/versions" "0.90.0"
-    commander "^9.4.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "^0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    "@fuel-ts/versions" "0.94.1"
+    commander "12.1.0"
     glob "^10.2.6"
-    handlebars "^4.7.7"
+    handlebars "^4.7.8"
     mkdirp "^1.0.4"
-    ramda "^0.29.0"
-    rimraf "^3.0.2"
+    ramda "^0.30.1"
+    rimraf "^5.0.8"
 
 "@fuel-ts/account@0.88.1":
   version "0.88.1"
@@ -704,32 +709,30 @@
     tree-kill "^1.2.2"
     uuid "^9.0.0"
 
-"@fuel-ts/account@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/account/-/account-0.90.0.tgz"
-  integrity sha512-TsGJhRnvVAaSMrTlq+bljzEHNssfiRUrO3JGleCjIsgQIf3PugwMgvFqlJpDYUQnWuFG0nDcf1FCG4mjG+KKuA==
+"@fuel-ts/account@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/account/-/account-0.94.1.tgz"
+  integrity sha512-k8KWcorQyP/G5pizm4o0iti4lvrMVAo4MRTMiobD+wQkve7xBYoJDWcxLuDOI1iS7SLYyyEjIux+GmGDG5kaWg==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/address" "0.90.0"
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/hasher" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/merkle" "0.90.0"
-    "@fuel-ts/transactions" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    "@fuel-ts/versions" "0.90.0"
-    "@fuels/vm-asm" "0.54.0"
-    "@noble/curves" "^1.3.0"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/address" "0.94.1"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/hasher" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/merkle" "0.94.1"
+    "@fuel-ts/transactions" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    "@fuel-ts/versions" "0.94.1"
+    "@fuels/vm-asm" "0.56.0"
+    "@noble/curves" "^1.4.2"
     events "^3.3.0"
-    graphql "^16.8.1"
+    graphql "^16.9.0"
     graphql-request "5.0.0"
     graphql-tag "^2.12.6"
     portfinder "^1.0.32"
-    ramda "^0.29.0"
-    tree-kill "^1.2.2"
-    uuid "^9.0.0"
+    ramda "^0.30.1"
 
 "@fuel-ts/address@0.88.1":
   version "0.88.1"
@@ -743,35 +746,37 @@
     "@noble/hashes" "^1.3.3"
     bech32 "^2.0.0"
 
-"@fuel-ts/address@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/address/-/address-0.90.0.tgz"
-  integrity sha512-WE/8GdcgopiWGCXp9Hjf9JOjkdWvqU4ayuU7Q09k67YmLzgh8AqZxpHAh4yn7BUiF/hKNhcTioZmgilUsCmfiA==
+"@fuel-ts/address@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/address/-/address-0.94.1.tgz"
+  integrity sha512-8Z3pii3fHSslqXACd5EpBcaxOmdoEtdp3W7WasGrwgID+BqrIWk6yzH07Jghqc9WmCGVI+DZRedthVmnJurJiQ==
   dependencies:
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/utils" "^0.90.0"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/utils" "^0.94.1"
     "@noble/hashes" "^1.3.3"
     bech32 "^2.0.0"
 
-"@fuel-ts/contract@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/contract/-/contract-0.90.0.tgz"
-  integrity sha512-eudZ/a7VkwbwPIv/EH64ANcS5pQfnXCdJkvNNzVR7rEMVrByU3rW/RNIF67Be8Ej+FK5+SE4xp0a/kMjXlNVhQ==
+"@fuel-ts/contract@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/contract/-/contract-0.94.1.tgz"
+  integrity sha512-m0xf8NEOTCUm357gEVOlBpmY0ft2/wSQb6bWHrMxtZ/CyYHZ55tJh2E5YF5i9zu7zbDMR1HuVEcbxAvvwaPZqw==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/account" "0.90.0"
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/hasher" "0.90.0"
-    "@fuel-ts/interfaces" "^0.90.0"
-    "@fuel-ts/merkle" "0.90.0"
-    "@fuel-ts/program" "0.90.0"
-    "@fuel-ts/transactions" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    "@fuel-ts/versions" "0.90.0"
-    ramda "^0.29.0"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/account" "0.94.1"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/hasher" "0.94.1"
+    "@fuel-ts/interfaces" "^0.94.1"
+    "@fuel-ts/math" "^0.94.1"
+    "@fuel-ts/merkle" "0.94.1"
+    "@fuel-ts/program" "0.94.1"
+    "@fuel-ts/transactions" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    "@fuel-ts/versions" "0.94.1"
+    "@fuels/vm-asm" "0.56.0"
+    ramda "^0.30.1"
 
 "@fuel-ts/crypto@0.88.1":
   version "0.88.1"
@@ -784,15 +789,15 @@
     "@fuel-ts/utils" "^0.88.1"
     "@noble/hashes" "^1.3.3"
 
-"@fuel-ts/crypto@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/crypto/-/crypto-0.90.0.tgz"
-  integrity sha512-Q41Ka9McQUDmdiL5Lc3HZ7Gm1YAObrBzdMsudVuMIGWIIX4Sckohj/CWF9hI2fQBrn/zdMeatFaYtuid7ze+Uw==
+"@fuel-ts/crypto@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/crypto/-/crypto-0.94.1.tgz"
+  integrity sha512-+Ga41iXUxulw6o6mI86/gj3iyXDC0MP03+X7O6XTnOL1WIX1qiOWUnxaupouKhZuNq52k5nVTfH8nTLd9ek/Gg==
   dependencies:
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/utils" "^0.90.0"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/utils" "^0.94.1"
     "@noble/hashes" "^1.3.3"
 
 "@fuel-ts/errors@0.88.1":
@@ -802,12 +807,12 @@
   dependencies:
     "@fuel-ts/versions" "0.88.1"
 
-"@fuel-ts/errors@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/errors/-/errors-0.90.0.tgz"
-  integrity sha512-iKYCS4cgWHV40Kr0c2+4kboUtebz9Vi8DHld6QWdeTh2khjhptZf7LrhgTh3gepAEaMF48x4F+3LZNd4Ia3wmg==
+"@fuel-ts/errors@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/errors/-/errors-0.94.1.tgz"
+  integrity sha512-eKNBFIlB1xPc13899R0FdhGwiykbkBdBlgAinbjDLm8RSWHYMAFjgRpho6HELcYpLYFqf6uY9ms/J3BBosSFEA==
   dependencies:
-    "@fuel-ts/versions" "0.90.0"
+    "@fuel-ts/versions" "0.94.1"
 
 "@fuel-ts/hasher@0.88.1", "@fuel-ts/hasher@^0.88.1":
   version "0.88.1"
@@ -819,14 +824,14 @@
     "@fuel-ts/utils" "0.88.1"
     "@noble/hashes" "^1.3.3"
 
-"@fuel-ts/hasher@0.90.0", "@fuel-ts/hasher@^0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/hasher/-/hasher-0.90.0.tgz"
-  integrity sha512-GmDziNupy+KuuIq8Wz42WOC1h/z4q/0ml7+5LeeqwhRiJ+Ekzud5py605AZbKFy5S5L3VH0TkLTkhbsJycd0lA==
+"@fuel-ts/hasher@0.94.1", "@fuel-ts/hasher@^0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/hasher/-/hasher-0.94.1.tgz"
+  integrity sha512-EiaLTk3TwiJOo78O47blhrntEMG4zx1HqjfNcwcOASq11Rd3IdzWjtxQqdnWqTm+bvvaVd2NkoUgd42EtMlR2A==
   dependencies:
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/interfaces" "^0.90.0"
-    "@fuel-ts/utils" "0.90.0"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/interfaces" "^0.94.1"
+    "@fuel-ts/utils" "0.94.1"
     "@noble/hashes" "^1.3.3"
 
 "@fuel-ts/interfaces@0.88.1", "@fuel-ts/interfaces@^0.88.1":
@@ -834,10 +839,10 @@
   resolved "https://registry.npmjs.org/@fuel-ts/interfaces/-/interfaces-0.88.1.tgz"
   integrity sha512-gt3YQ6gq6UjpYVaXITZ/K3X9UbNdR3VUgv8Ix4mkEJ9RfIwTGb0+QwBhTzHwq+WP2iNz5Fz8mkWRTtQhdpT6EA==
 
-"@fuel-ts/interfaces@0.90.0", "@fuel-ts/interfaces@^0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/interfaces/-/interfaces-0.90.0.tgz"
-  integrity sha512-ahfNPmGd/fbMVNNxXXmASpGK7vuZd+aaNONVcciCgU+St8026JUgSi7YKOVvlW/Y0eTfgpYJ43DeVdo97hfrwQ==
+"@fuel-ts/interfaces@0.94.1", "@fuel-ts/interfaces@^0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/interfaces/-/interfaces-0.94.1.tgz"
+  integrity sha512-ygw6wZoXQr2/AU91VuJporo68ySgVsmSRkNiJ+lP9Rq5WLie2TXTR4REyD4UGgTGKvjkwMl5YOVfGNFP6hRX4g==
 
 "@fuel-ts/math@0.88.1":
   version "0.88.1"
@@ -848,13 +853,13 @@
     "@types/bn.js" "^5.1.1"
     bn.js "^5.2.1"
 
-"@fuel-ts/math@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/math/-/math-0.90.0.tgz"
-  integrity sha512-u1RxXQKIpzoySHNI5OE8rMxWKpOTIb1mNr8x0lqYQ1FCiV4P54aXc0zFXv92JawqzNeuLF2qNsWLI09QpDCQ8Q==
+"@fuel-ts/math@0.94.1", "@fuel-ts/math@^0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/math/-/math-0.94.1.tgz"
+  integrity sha512-FzNmIPBTV4KbLi4D+2G0YdIjfC5sC9HTGyd93WITd5DHcqRlHXqTUMENyIa5tenouBXl9g8mNGfc8AJ/6UQIuQ==
   dependencies:
-    "@fuel-ts/errors" "0.90.0"
-    "@types/bn.js" "^5.1.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@types/bn.js" "^5.1.5"
     bn.js "^5.2.1"
 
 "@fuel-ts/merkle@0.88.1":
@@ -865,29 +870,29 @@
     "@fuel-ts/hasher" "^0.88.1"
     "@fuel-ts/math" "0.88.1"
 
-"@fuel-ts/merkle@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/merkle/-/merkle-0.90.0.tgz"
-  integrity sha512-tE91M+gJtZ2N8Z7aE/pUS7xN/3wGQGuyOI63AGVz9mHlJu/Fkkt6f1BWgMK1GIGHk+5zmFJYxwlrFCiZhv8ahw==
+"@fuel-ts/merkle@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/merkle/-/merkle-0.94.1.tgz"
+  integrity sha512-k1J+sM286DPlSe4HHzQYKURR2dsFDQHrOCMQ5x/t+gOKyDa4IxAmCWMsirhVTB2WFwx9AsPhOuOiYYqsu4IdFQ==
   dependencies:
-    "@fuel-ts/hasher" "^0.90.0"
-    "@fuel-ts/math" "0.90.0"
+    "@fuel-ts/hasher" "^0.94.1"
+    "@fuel-ts/math" "0.94.1"
 
-"@fuel-ts/program@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/program/-/program-0.90.0.tgz"
-  integrity sha512-JQ3Lz8gZfqM7ds8mfTSpzkoYOT2+G/7/BhUtXSGIe7y+ZjDEddLN8Xaty2n4QJDCAUqAhVPuFuwZw9e4O8zfmQ==
+"@fuel-ts/program@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/program/-/program-0.94.1.tgz"
+  integrity sha512-R7MT846vFaDf28Iq6ii6RNzvXQG7UrnvK/Tk4obn8NeISg2J22TqmxLrbkdEmsAhUcakF+Kj9erL83K86PZrEA==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/account" "0.90.0"
-    "@fuel-ts/address" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/transactions" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    "@fuels/vm-asm" "0.54.0"
-    ramda "^0.29.0"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/account" "0.94.1"
+    "@fuel-ts/address" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/transactions" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    "@fuels/vm-asm" "0.56.0"
+    ramda "^0.30.1"
 
 "@fuel-ts/program@^0.88.1":
   version "0.88.1"
@@ -905,20 +910,20 @@
     "@fuels/vm-asm" "0.49.0"
     ramda "^0.29.0"
 
-"@fuel-ts/script@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/script/-/script-0.90.0.tgz"
-  integrity sha512-+zlUcNjzKgR94KqF6iUDQWvYFQZE23eAXz1jVsBSsi04aUf3hGprbJgc7l3NOnWpnHajGGb625hDY4IzDPIC8g==
+"@fuel-ts/script@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/script/-/script-0.94.1.tgz"
+  integrity sha512-eGyzcCCuvZnIWt6PP/6HqGlHTrethFmOy19DgZizlpvReEqbKWQaApT3LgKvWYQxGTeGwALsvM2N3qF9HvIp8A==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/account" "0.90.0"
-    "@fuel-ts/address" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/program" "0.90.0"
-    "@fuel-ts/transactions" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/account" "0.94.1"
+    "@fuel-ts/address" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/program" "0.94.1"
+    "@fuel-ts/transactions" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
 
 "@fuel-ts/transactions@0.88.1":
   version "0.88.1"
@@ -933,18 +938,18 @@
     "@fuel-ts/math" "0.88.1"
     "@fuel-ts/utils" "0.88.1"
 
-"@fuel-ts/transactions@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/transactions/-/transactions-0.90.0.tgz"
-  integrity sha512-uxXVhvepO6KLwQ2FHUly+2RHOuy7ny0VWyC1EIccV4MPsTqH0U96JQsOpr2U9eMMXXQDorQG6bAZXP3VvlaTOw==
+"@fuel-ts/transactions@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/transactions/-/transactions-0.94.1.tgz"
+  integrity sha512-OPkaC1pqBSgWETynA5R9kapSGoCJYGXuPhezaNCRCe69IjS2nkzWbw/aKxSJTvtU6PQ/Tv37OPiN+Om5YDBb8Q==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/address" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/hasher" "^0.90.0"
-    "@fuel-ts/interfaces" "^0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/address" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/hasher" "^0.94.1"
+    "@fuel-ts/interfaces" "^0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
 
 "@fuel-ts/utils@0.88.1", "@fuel-ts/utils@^0.88.1":
   version "0.88.1"
@@ -955,15 +960,16 @@
     "@fuel-ts/interfaces" "0.88.1"
     "@fuel-ts/math" "0.88.1"
 
-"@fuel-ts/utils@0.90.0", "@fuel-ts/utils@^0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/utils/-/utils-0.90.0.tgz"
-  integrity sha512-+/y5KQfhFH1+nOFZ3LepAi/d4NVSOYs0TjNe+Mb5Acu1I7ngdAPk92KwdE2TmDDBafSPJG5HQR4bSlh4H6bRLw==
+"@fuel-ts/utils@0.94.1", "@fuel-ts/utils@^0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/utils/-/utils-0.94.1.tgz"
+  integrity sha512-rRcg67TQGeaPyhzgmRL43E7+fwEibpcFy/YZTlXQ7wS3uRuUnJd6EjnVUtOjPJLV6w5tTJ50puSF24iLNc38FA==
   dependencies:
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/versions" "0.90.0"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/versions" "0.94.1"
+    fflate "^0.8.2"
 
 "@fuel-ts/versions@0.88.1":
   version "0.88.1"
@@ -973,10 +979,10 @@
     chalk "4"
     cli-table "^0.3.11"
 
-"@fuel-ts/versions@0.90.0":
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/@fuel-ts/versions/-/versions-0.90.0.tgz"
-  integrity sha512-oXXDleRAK1MLHuhveyfAUNQkHG9bISHtuvAGbjHYtaUVjI/k0o9ii9HLjlvRnFvc7G57CzIsnm6wSnoPaYBfhg==
+"@fuel-ts/versions@0.94.1":
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/@fuel-ts/versions/-/versions-0.94.1.tgz"
+  integrity sha512-Da0X6oTgeic7T6bTmHa0crK+ccFvHEkC8h2SxeE3ptWYqC7osoNRoJTk5O7JO2LD0NKFIYJU9BghooOomXFXNw==
   dependencies:
     chalk "4"
     cli-table "^0.3.11"
@@ -986,10 +992,10 @@
   resolved "https://registry.npmjs.org/@fuels/vm-asm/-/vm-asm-0.49.0.tgz"
   integrity sha512-IL+X9XoTlmomgSKO1pp8IThD/dcQo4Mz3dmCqRcY5+I9ux25P2apPCHxYLFx9m5bPJlQTm6VKbeVLMSdhr9nOw==
 
-"@fuels/vm-asm@0.54.0":
-  version "0.54.0"
-  resolved "https://registry.npmjs.org/@fuels/vm-asm/-/vm-asm-0.54.0.tgz"
-  integrity sha512-9f7jM55qBLRHQdP2Dtipd5Ni90vIiGEC/9mmYye2W2/6iazaAoYfYavYGIMlXIZ6Ven3mWrfok2VZGT2pQ7i8w==
+"@fuels/vm-asm@0.56.0":
+  version "0.56.0"
+  resolved "https://registry.npmjs.org/@fuels/vm-asm/-/vm-asm-0.56.0.tgz"
+  integrity sha512-oa9P55qkez/UASB8VNhTg3XflVWLHAC0JTKuCDLKZ+2ivxzLeHHcrIO+3AtJXLvUwTU9kC4rHMNUqXDaKz7HrA==
 
 "@gql.tada/cli-utils@1.6.1":
   version "1.6.1"
@@ -1142,7 +1148,7 @@
   dependencies:
     "@noble/hashes" "1.3.2"
 
-"@noble/curves@^1.1.0", "@noble/curves@^1.3.0", "@noble/curves@^1.4.0":
+"@noble/curves@^1.1.0", "@noble/curves@^1.3.0", "@noble/curves@^1.4.0", "@noble/curves@^1.4.2":
   version "1.5.0"
   resolved "https://registry.npmjs.org/@noble/curves/-/curves-1.5.0.tgz"
   integrity sha512-J5EKamIHnKPyClwVrzmaf5wSdQXgdHcPZIZLu3bwnbeCx8/7NPK5q2ZBWF+5FvYGByjiQQsJYX6jfgB2wDPn3A==
@@ -1452,10 +1458,10 @@
   resolved "https://registry.npmjs.org/@sentio/chain/-/chain-2.1.5.tgz"
   integrity sha512-FYqu6IE5R50C5mN3SZV85nb0iy9pL3gKFVzjJRVVjOdExdPLF8PDNP7RrS/zuSTY3rH08sh1ocEaaWuu+HCvXw==
 
-"@sentio/cli@^2.20.1":
-  version "2.20.1"
-  resolved "https://registry.npmjs.org/@sentio/cli/-/cli-2.20.1.tgz"
-  integrity sha512-y5043W5sPLpd0AaawQRou+P1lxmnfDAUrIM6B5pMlOIg8h6uWbSnNPfMYuSEbE+3bwpde1awpZLrvj/Gce/qRg==
+"@sentio/cli@^2.20.2-rc.3":
+  version "2.20.2-rc.3"
+  resolved "https://registry.npmjs.org/@sentio/cli/-/cli-2.20.2-rc.3.tgz"
+  integrity sha512-SW7DI46v0M1b+tRx/RipFMR09ruTP7mM/ouPbhHSefv5yMIHkFW9gcg1dxBCyEcwo7RM5UXiPSqUXrIjj28PBQ==
   dependencies:
     "@sentio/graph-cli" "^0.80.0-patch.1"
     tsup "npm:@sentio/tsup@^6.7.2"
@@ -1503,10 +1509,10 @@
     which "2.0.2"
     yaml "1.10.2"
 
-"@sentio/protos@2.41.2":
-  version "2.41.2"
-  resolved "https://registry.npmjs.org/@sentio/protos/-/protos-2.41.2.tgz"
-  integrity sha512-EG0PL1ksuRBu7/c4AHILKTZIvmgHuo/OmAATQH0ytK/FPveqDekL2PMOYMP8mZrLCJLm1tsoyzhmaYE8WJpUJQ==
+"@sentio/protos@2.41.3-rc.3":
+  version "2.41.3-rc.3"
+  resolved "https://registry.npmjs.org/@sentio/protos/-/protos-2.41.3-rc.3.tgz"
+  integrity sha512-wqW+0tmYkRonkFPs+ZB4SphEQGi0RC36hQgHy2BS8YMfz06CTrV/xwgcmcwtkZXDBNbfHB06mJ4APIOaMf6+gg==
   dependencies:
     google-protobuf "^3.21.2"
     long "^5.2.3"
@@ -1514,15 +1520,15 @@
     nice-grpc-common "^2.0.2"
     protobufjs "^7.2.6"
 
-"@sentio/runtime@^2.41.2":
-  version "2.41.2"
-  resolved "https://registry.npmjs.org/@sentio/runtime/-/runtime-2.41.2.tgz"
-  integrity sha512-Kl8ESJt8cVv6LtKRPq9jARIgMrn33GhpiBndz8JsXpyDpW/tmlML0bjZ55aktFqvGoSzWQ4rgbrXc8bhS+NG/g==
+"@sentio/runtime@^2.41.3-rc.3":
+  version "2.41.3-rc.3"
+  resolved "https://registry.npmjs.org/@sentio/runtime/-/runtime-2.41.3-rc.3.tgz"
+  integrity sha512-94/gLeKUExRrOwWwxsoq5Ii6tq8e4rRCErYu6Z+kCt53mx7w0qJA2Z34zTvmNk/OliNxSleHEjfAtuTxZx+3vg==
 
-"@sentio/sdk@^2.41.2":
-  version "2.41.2"
-  resolved "https://registry.npmjs.org/@sentio/sdk/-/sdk-2.41.2.tgz"
-  integrity sha512-AYxkeRI3FHVjSAVbejE683lBlTiAqj0cuhPToO0vTBfJDUE2izgSrz+zQl/oiwncWGoIUpm99bIoQu+mYbzoZw==
+"@sentio/sdk@^2.41.3-rc.3":
+  version "2.41.3-rc.3"
+  resolved "https://registry.npmjs.org/@sentio/sdk/-/sdk-2.41.3-rc.3.tgz"
+  integrity sha512-uI8g4enrH2YW/vbEeetzWOJH+XMRoIecbMHLkN/rcWbqJxWdWL8gcqoMrSje/DLYcrs+O+WMz4XGfiPMveMldQ==
   dependencies:
     "@aptos-labs/ts-sdk" "~1.26.0"
     "@coral-xyz/borsh" "^0.30.0"
@@ -1533,8 +1539,8 @@
     "@sentio/bigdecimal" "9.1.1-patch.3"
     "@sentio/chain" "^2.1.0"
     "@sentio/ethers-v6" "^1.0.29"
-    "@sentio/protos" "2.41.2"
-    "@sentio/runtime" "^2.41.2"
+    "@sentio/protos" "2.41.3-rc.3"
+    "@sentio/runtime" "^2.41.3-rc.3"
     "@solana/web3.js" "1.91.8"
     "@typemove/aptos" "~1.6.3"
     "@typemove/move" "~1.6.3"
@@ -1543,7 +1549,7 @@
     chalk "^5.3.0"
     csv-parse "^5.5.3"
     ethers "npm:@sentio/ethers@6.13.1-patch.1"
-    fuels "^0.90.0"
+    fuels "^0.94.1"
     graphql "^16.9.0"
     js-sha3 "^0.9.3"
     lru-cache "^11.0.0"
@@ -1665,7 +1671,7 @@
     prettier "^3.2.4"
     radash "^12.0.0"
 
-"@types/bn.js@^5.1.0", "@types/bn.js@^5.1.1":
+"@types/bn.js@^5.1.0", "@types/bn.js@^5.1.1", "@types/bn.js@^5.1.5":
   version "5.1.5"
   resolved "https://registry.npmjs.org/@types/bn.js/-/bn.js-5.1.5.tgz"
   integrity sha512-V46N0zwKRF5Q00AZ6hWtN0T8gGmDUaUzLWQvHFo5yThtVwK/VCenFY3wXVbOvNfajEpsTfQM4IN9k/d6gUVX3A==
@@ -1721,11 +1727,6 @@
   integrity sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==
   dependencies:
     "@types/node" "*"
-
-"@types/lodash@^4.14.175":
-  version "4.17.7"
-  resolved "https://registry.npmjs.org/@types/lodash/-/lodash-4.17.7.tgz"
-  integrity sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==
 
 "@types/long@^4.0.1":
   version "4.0.2"
@@ -2314,10 +2315,10 @@ bundle-require@4.0.1:
   dependencies:
     load-tsconfig "^0.2.3"
 
-bundle-require@^4.0.1:
-  version "4.2.1"
-  resolved "https://registry.npmjs.org/bundle-require/-/bundle-require-4.2.1.tgz"
-  integrity sha512-7Q/6vkyYAwOmQNRw75x+4yRtZCZJXUDmHHlFdkiV0wgv/reNjtJwpu1jPJ0w2kbEpIM0uoKI3S4/f39dU7AjSA==
+bundle-require@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/bundle-require/-/bundle-require-5.0.0.tgz"
+  integrity sha512-GuziW3fSSmopcx4KRymQEJVbZUfqlCqcq7dvs6TYwKRZiegK/2buMxQTPs6MGlNv50wms1699qYO54R8XfRX4w==
   dependencies:
     load-tsconfig "^0.2.3"
 
@@ -2593,7 +2594,7 @@ command-line-usage@^6.1.0:
     table-layout "^1.0.2"
     typical "^5.2.0"
 
-commander@^12.0.0:
+commander@12.1.0, commander@^12.0.0:
   version "12.1.0"
   resolved "https://registry.npmjs.org/commander/-/commander-12.1.0.tgz"
   integrity sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==
@@ -2607,11 +2608,6 @@ commander@^4.0.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
-
-commander@^9.4.1:
-  version "9.5.0"
-  resolved "https://registry.npmjs.org/commander/-/commander-9.5.0.tgz"
-  integrity sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -2974,34 +2970,35 @@ esbuild@^0.17.6:
     "@esbuild/win32-ia32" "0.17.19"
     "@esbuild/win32-x64" "0.17.19"
 
-esbuild@^0.19.3:
-  version "0.19.12"
-  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.19.12.tgz"
-  integrity sha512-aARqgq8roFBj054KvQr5f1sFu0D65G+miZRCuJyJ0G13Zwx7vRar5Zhn2tkQNzIXcBrNVsv/8stehpj+GAjgbg==
+esbuild@^0.22.0:
+  version "0.22.0"
+  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.22.0.tgz"
+  integrity sha512-zNYA6bFZsVnsU481FnGAQjLDW0Pl/8BGG7EvAp15RzUvGC+ME7hf1q7LvIfStEQBz/iEHuBJCYcOwPmNCf1Tlw==
   optionalDependencies:
-    "@esbuild/aix-ppc64" "0.19.12"
-    "@esbuild/android-arm" "0.19.12"
-    "@esbuild/android-arm64" "0.19.12"
-    "@esbuild/android-x64" "0.19.12"
-    "@esbuild/darwin-arm64" "0.19.12"
-    "@esbuild/darwin-x64" "0.19.12"
-    "@esbuild/freebsd-arm64" "0.19.12"
-    "@esbuild/freebsd-x64" "0.19.12"
-    "@esbuild/linux-arm" "0.19.12"
-    "@esbuild/linux-arm64" "0.19.12"
-    "@esbuild/linux-ia32" "0.19.12"
-    "@esbuild/linux-loong64" "0.19.12"
-    "@esbuild/linux-mips64el" "0.19.12"
-    "@esbuild/linux-ppc64" "0.19.12"
-    "@esbuild/linux-riscv64" "0.19.12"
-    "@esbuild/linux-s390x" "0.19.12"
-    "@esbuild/linux-x64" "0.19.12"
-    "@esbuild/netbsd-x64" "0.19.12"
-    "@esbuild/openbsd-x64" "0.19.12"
-    "@esbuild/sunos-x64" "0.19.12"
-    "@esbuild/win32-arm64" "0.19.12"
-    "@esbuild/win32-ia32" "0.19.12"
-    "@esbuild/win32-x64" "0.19.12"
+    "@esbuild/aix-ppc64" "0.22.0"
+    "@esbuild/android-arm" "0.22.0"
+    "@esbuild/android-arm64" "0.22.0"
+    "@esbuild/android-x64" "0.22.0"
+    "@esbuild/darwin-arm64" "0.22.0"
+    "@esbuild/darwin-x64" "0.22.0"
+    "@esbuild/freebsd-arm64" "0.22.0"
+    "@esbuild/freebsd-x64" "0.22.0"
+    "@esbuild/linux-arm" "0.22.0"
+    "@esbuild/linux-arm64" "0.22.0"
+    "@esbuild/linux-ia32" "0.22.0"
+    "@esbuild/linux-loong64" "0.22.0"
+    "@esbuild/linux-mips64el" "0.22.0"
+    "@esbuild/linux-ppc64" "0.22.0"
+    "@esbuild/linux-riscv64" "0.22.0"
+    "@esbuild/linux-s390x" "0.22.0"
+    "@esbuild/linux-x64" "0.22.0"
+    "@esbuild/netbsd-x64" "0.22.0"
+    "@esbuild/openbsd-arm64" "0.22.0"
+    "@esbuild/openbsd-x64" "0.22.0"
+    "@esbuild/sunos-x64" "0.22.0"
+    "@esbuild/win32-arm64" "0.22.0"
+    "@esbuild/win32-ia32" "0.22.0"
+    "@esbuild/win32-x64" "0.22.0"
 
 esbuild@~0.23.0:
   version "0.23.1"
@@ -3241,6 +3238,11 @@ fetch-cookie@^3.0.0:
     set-cookie-parser "^2.4.8"
     tough-cookie "^4.0.0"
 
+fflate@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.npmjs.org/fflate/-/fflate-0.8.2.tgz"
+  integrity sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==
+
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz"
@@ -3372,40 +3374,40 @@ fsevents@~2.3.2, fsevents@~2.3.3:
   resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz"
   integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
 
-fuels@^0.90.0:
-  version "0.90.0"
-  resolved "https://registry.npmjs.org/fuels/-/fuels-0.90.0.tgz"
-  integrity sha512-/UNCB2s9eXC83bbnrJSA3EvAfayKWkrHhWn11pKX0ya9zi71HeNc1pcbRfeF2SNBcJckjfqYgkbdD8XV0MxhVA==
+fuels@^0.94.1:
+  version "0.94.1"
+  resolved "https://registry.npmjs.org/fuels/-/fuels-0.94.1.tgz"
+  integrity sha512-9iNxnLed1CVGz9OClYoEBaEyMA3o+iZdG+XbUrbdkQnJhOuwRYDk3uNLkpXMsshh8pyElSL407IxEcT9rB9o0g==
   dependencies:
-    "@fuel-ts/abi-coder" "0.90.0"
-    "@fuel-ts/abi-typegen" "0.90.0"
-    "@fuel-ts/account" "0.90.0"
-    "@fuel-ts/address" "0.90.0"
-    "@fuel-ts/contract" "0.90.0"
-    "@fuel-ts/crypto" "0.90.0"
-    "@fuel-ts/errors" "0.90.0"
-    "@fuel-ts/hasher" "0.90.0"
-    "@fuel-ts/interfaces" "0.90.0"
-    "@fuel-ts/math" "0.90.0"
-    "@fuel-ts/merkle" "0.90.0"
-    "@fuel-ts/program" "0.90.0"
-    "@fuel-ts/script" "0.90.0"
-    "@fuel-ts/transactions" "0.90.0"
-    "@fuel-ts/utils" "0.90.0"
-    "@fuel-ts/versions" "0.90.0"
-    bundle-require "^4.0.1"
+    "@fuel-ts/abi-coder" "0.94.1"
+    "@fuel-ts/abi-typegen" "0.94.1"
+    "@fuel-ts/account" "0.94.1"
+    "@fuel-ts/address" "0.94.1"
+    "@fuel-ts/contract" "0.94.1"
+    "@fuel-ts/crypto" "0.94.1"
+    "@fuel-ts/errors" "0.94.1"
+    "@fuel-ts/hasher" "0.94.1"
+    "@fuel-ts/interfaces" "0.94.1"
+    "@fuel-ts/math" "0.94.1"
+    "@fuel-ts/merkle" "0.94.1"
+    "@fuel-ts/program" "0.94.1"
+    "@fuel-ts/script" "0.94.1"
+    "@fuel-ts/transactions" "0.94.1"
+    "@fuel-ts/utils" "0.94.1"
+    "@fuel-ts/versions" "0.94.1"
+    bundle-require "^5.0.0"
     chalk "4"
     chokidar "^3.5.3"
-    commander "^9.4.1"
-    esbuild "^0.19.3"
+    commander "12.1.0"
+    esbuild "^0.22.0"
     glob "^10.2.6"
-    handlebars "^4.7.7"
+    handlebars "^4.7.8"
     joycon "^3.1.1"
     lodash.camelcase "^4.3.0"
     portfinder "^1.0.32"
     toml "^3.0.0"
-    tree-kill "^1.2.2"
-    yup "^0.32.11"
+    uglify-js "^3.19.2"
+    yup "^1.4.0"
 
 function-bind@^1.1.2:
   version "1.1.2"
@@ -3498,7 +3500,7 @@ glob@9.3.5:
     minipass "^4.2.4"
     path-scurry "^1.6.1"
 
-glob@^10.2.6, glob@^10.3.10:
+glob@^10.2.6, glob@^10.3.10, glob@^10.3.7:
   version "10.4.5"
   resolved "https://registry.npmjs.org/glob/-/glob-10.4.5.tgz"
   integrity sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==
@@ -3646,7 +3648,7 @@ graphql@15.5.0:
   resolved "https://registry.npmjs.org/graphql/-/graphql-16.9.0.tgz"
   integrity sha512-GGTKBX4SD7Wdb8mqeDLni2oaRGYQWjWHGKPQ24ZMnUtKfcsVoiv4uX8+LJr1K6U5VW2Lu1BwJnj7uiori0YtRw==
 
-handlebars@^4.7.7:
+handlebars@^4.7.8:
   version "4.7.8"
   resolved "https://registry.npmjs.org/handlebars/-/handlebars-4.7.8.tgz"
   integrity sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==
@@ -4250,11 +4252,6 @@ load-tsconfig@^0.2.3:
   resolved "https://registry.npmjs.org/load-tsconfig/-/load-tsconfig-0.2.5.tgz"
   integrity sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==
 
-lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
-
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz"
@@ -4335,7 +4332,7 @@ lodash.upperfirst@^4.3.1:
   resolved "https://registry.npmjs.org/lodash.upperfirst/-/lodash.upperfirst-4.3.1.tgz"
   integrity sha512-sReKOYJIJf74dhJONhU4e0/shzi1trVbSWDOhKYE5XV2O+H7Sb2Dihwuc7xWxVl+DgFPyTqIN3zMfT9cq5iWDg==
 
-lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
+lodash@^4.17.14, lodash@^4.17.15:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -4584,11 +4581,6 @@ mz@^2.7.0:
     any-promise "^1.0.0"
     object-assign "^4.0.1"
     thenify-all "^1.0.0"
-
-nanoclone@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.npmjs.org/nanoclone/-/nanoclone-0.2.1.tgz"
-  integrity sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA==
 
 nanoid@^3.0.2, nanoid@^3.1.20, nanoid@^3.1.23:
   version "3.3.7"
@@ -4950,7 +4942,7 @@ promise@^8.0.0:
   dependencies:
     asap "~2.0.6"
 
-property-expr@^2.0.4:
+property-expr@^2.0.5:
   version "2.0.6"
   resolved "https://registry.npmjs.org/property-expr/-/property-expr-2.0.6.tgz"
   integrity sha512-SVtmxhRE/CGkn3eZY1T6pC8Nln6Fr/lu1mKSgRud0eC73whjGfoAogbn78LkD8aFL0zz3bAFerKSnOl7NlErBA==
@@ -4975,9 +4967,9 @@ protobufjs@^6.10.2:
     long "^4.0.0"
 
 protobufjs@^7.2.5, protobufjs@^7.2.6:
-  version "7.3.3"
-  resolved "https://registry.npmjs.org/protobufjs/-/protobufjs-7.3.3.tgz"
-  integrity sha512-HaYi2CVjiPoBR1d2zTVKVHXr9IUnpJizCjUu19vxdD3B8o4z+vfOHpIEB1358w8nv8dfUNEfDHFvMsH7QlLt/Q==
+  version "7.4.0"
+  resolved "https://registry.npmjs.org/protobufjs/-/protobufjs-7.4.0.tgz"
+  integrity sha512-mRUWCc3KUU4w1jU8sGxICXH/gNS94DvI1gxqDvBzhj1JpcsimQkYiOJfwsPUykUI5ZaspFbSgmBLER8IrQ3tqw==
   dependencies:
     "@protobufjs/aspromise" "^1.1.2"
     "@protobufjs/base64" "^1.1.2"
@@ -5071,6 +5063,11 @@ ramda@^0.29.0:
   version "0.29.1"
   resolved "https://registry.npmjs.org/ramda/-/ramda-0.29.1.tgz"
   integrity sha512-OfxIeWzd4xdUNxlWhgFazxsA/nl3mS4/jGZI5n00uWOoSSFRhC1b6gl6xvmzUamgmqELraWp0J/qqVlXYPDPyA==
+
+ramda@^0.30.1:
+  version "0.30.1"
+  resolved "https://registry.npmjs.org/ramda/-/ramda-0.30.1.tgz"
+  integrity sha512-tEF5I22zJnuclswcZMc8bDIrwRHRzf+NqVEmqg50ShAZMP7MWeR/RGDthfM/p+BlqvF2fXAzpn8i+SJcYD3alw==
 
 randombytes@^2.1.0:
   version "2.1.0"
@@ -5222,6 +5219,13 @@ rimraf@^3.0.2:
   integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
   dependencies:
     glob "^7.1.3"
+
+rimraf@^5.0.8:
+  version "5.0.10"
+  resolved "https://registry.npmjs.org/rimraf/-/rimraf-5.0.10.tgz"
+  integrity sha512-l0OE8wL34P4nJH/H2ffoaniAokM2qSmrtXHmlpvYr5AVVX8msAyW0l8NVJFDxlSK4u3Uh/f41cQheDVdnYijwQ==
+  dependencies:
+    glob "^10.3.7"
 
 ripemd160@^2.0.0, ripemd160@^2.0.1:
   version "2.0.2"
@@ -5707,6 +5711,11 @@ timeout-abort-controller@^2.0.0:
     native-abort-controller "^1.0.4"
     retimer "^3.0.0"
 
+tiny-case@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/tiny-case/-/tiny-case-1.0.3.tgz"
+  integrity sha512-Eet/eeMhkO6TX8mnUteS9zgPbUMQa4I6Kkp5ORiBD5476/m+PIRiumP5tmh5ioJpH7k51Kehawy2UDfsnxxY8Q==
+
 tmp-promise@3.0.3:
   version "3.0.3"
   resolved "https://registry.npmjs.org/tmp-promise/-/tmp-promise-3.0.3.tgz"
@@ -5867,10 +5876,20 @@ type-fest@^0.21.3:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
 
+type-fest@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
+  integrity sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA==
+
 type-fest@^3.1.0:
   version "3.13.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-3.13.1.tgz"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
+
+type-fest@^4.24.0:
+  version "4.25.0"
+  resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.25.0.tgz"
+  integrity sha512-bRkIGlXsnGBRBQRAY56UXBm//9qH4bmJfFvq83gSz41N282df+fjy8ofcEgc1sM8geNt5cl6mC2g9Fht1cs8Aw==
 
 typechain@^8.3.2:
   version "8.3.2"
@@ -5908,7 +5927,7 @@ typical@^5.2.0:
   resolved "https://registry.npmjs.org/typical/-/typical-5.2.0.tgz"
   integrity sha512-dvdQgNDNJo+8B2uBQoqdb11eUCE1JQXhvjC/CZtgvZseVd5TYMXnq0+vuUemXbd/Se29cTaUuPX3YIc2xgbvIg==
 
-uglify-js@^3.1.4:
+uglify-js@^3.1.4, uglify-js@^3.19.2:
   version "3.19.2"
   resolved "https://registry.npmjs.org/uglify-js/-/uglify-js-3.19.2.tgz"
   integrity sha512-S8KA6DDI47nQXJSi2ctQ629YzwOVs+bQML6DAtvy0wgNdpi+0ySpQK0g2pxBq2xfF2z3YCscu7NNA8nXT9PlIQ==
@@ -6189,15 +6208,12 @@ yn@3.1.1:
   resolved "https://registry.npmjs.org/yn/-/yn-3.1.1.tgz"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
 
-yup@^0.32.11:
-  version "0.32.11"
-  resolved "https://registry.npmjs.org/yup/-/yup-0.32.11.tgz"
-  integrity sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==
+yup@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/yup/-/yup-1.4.0.tgz"
+  integrity sha512-wPbgkJRCqIf+OHyiTBQoJiP5PFuAXaWiJK6AmYkzQAh5/c2K9hzSApBZG5wV9KoKSePF7sAxmNSvh/13YHkFDg==
   dependencies:
-    "@babel/runtime" "^7.15.4"
-    "@types/lodash" "^4.14.175"
-    lodash "^4.17.21"
-    lodash-es "^4.17.21"
-    nanoclone "^0.2.1"
-    property-expr "^2.0.4"
+    property-expr "^2.0.5"
+    tiny-case "^1.0.3"
     toposort "^2.0.2"
+    type-fest "^2.19.0"

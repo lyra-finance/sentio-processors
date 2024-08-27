@@ -42,12 +42,15 @@ export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string,
     vaultAddress = getAddress(vaultAddress)
 
     // Gets closest vault token price +/- 1 day
+    const upperBound = snapshotTimestampMs + BigInt(MILLISECONDS_PER_DAY * 5)
+    const lowerBound = snapshotTimestampMs - BigInt(MILLISECONDS_PER_DAY * 5)
     const pricesNearby = await ctx.store.list(LyraVaultTokenPrice, [
         { field: "vaultAddress", op: "=", value: vaultAddress },
-        { field: "timestampMs", op: "<=", value: snapshotTimestampMs + BigInt(MILLISECONDS_PER_DAY * 5) },
-        { field: "timestampMs", op: ">=", value: snapshotTimestampMs - BigInt(MILLISECONDS_PER_DAY * 5) }
+        { field: "timestampMs", op: "<", value: upperBound },
+        { field: "timestampMs", op: ">", value: lowerBound }
     ])
 
+    console.log(`Looking through prices nearby for vault ${vaultAddress} with length ${pricesNearby.length} at timestamp ${snapshotTimestampMs} with bounds ${lowerBound} and ${upperBound}`)
     let tokenPriceWithinBounds: LyraVaultTokenPrice | undefined = await _find_closest_snapshot(pricesNearby, snapshotTimestampMs)
 
     // handle the last batch

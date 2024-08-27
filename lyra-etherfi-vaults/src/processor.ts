@@ -48,8 +48,8 @@ ERC20Processor.bind(
       console.log("onTimeInterval error", e.message, ctx.timestamp);
     }
   },
-    60,
-    60 * 4 // backfill at 4 hour intervals
+    60 * 24,
+    60 * 24 // backfill at 1 day
   )
 
 ERC20Processor.bind(

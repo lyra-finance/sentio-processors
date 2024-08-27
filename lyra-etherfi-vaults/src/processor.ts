@@ -16,7 +16,6 @@ import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
 // - For each token, once per day store `LyraVaultTokenPrice` price in terms of LBTC / dollars (TODO: Lyra chain not supported yet, assume 1:1)
 
 // Events
-// 2. At every transfer event or time interval, we emit a `position_snapshot` event which returns the latest vault balances and effective LBTC balance per user (TODO: TBD if Lombard needs this)
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
 
 

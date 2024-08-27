@@ -11,7 +11,7 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddr
 
     // Skip saving if Pre-Deposit Upgrade not yet enabled
     if (predepositUpgradeTimestampMs && nowMs < BigInt(predepositUpgradeTimestampMs)) {
-        console.log(`Skipping token price save at time ${nowMs} for ${vaultTokenAddress} as it's before pre-deposit upgrade`)
+        // console.log(`Skipping token price save at time ${nowMs} for ${vaultTokenAddress} as it's before pre-deposit upgrade`)
         return
     } else {
         console.log(`${vaultTokenAddress}, ${nowMs}, ${predepositUpgradeTimestampMs}`)
@@ -29,6 +29,9 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddr
             timestampMs: nowMs,
             vaultToUnderlying: shareToUnderlying
         }))
+
+        // For 0xec68928bd83B2E52fF5A8e8c215B6ea72879F521 got 1.006266950425962837 (1.6266950425962837)
+
     } catch (e) {
         console.log(`Error calling getSharesValue for ${vaultTokenAddress} at ${nowMs}: ${e.message}`)
         return
@@ -49,7 +52,7 @@ export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string,
 
     // handle the last batch
     if (!tokenPriceWithinBounds) {
-        return BigDecimal(1)
+        return vaultBalance
     }
     console.log(`Found token price within bounds for vault ${vaultAddress}`)
     return tokenPriceWithinBounds.vaultToUnderlying.multipliedBy(vaultBalance)

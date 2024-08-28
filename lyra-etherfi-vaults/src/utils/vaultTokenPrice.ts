@@ -1,39 +1,41 @@
-import { EthContext } from "@sentio/sdk/eth"
+import { EthChainId, EthContext, getProvider } from "@sentio/sdk/eth"
 import { LyraVaultTokenPrice } from "../schema/store.js"
-import { getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js"
+import { getLyraVaultTokenContract, getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js"
 import { MILLISECONDS_PER_DAY } from "../config.js"
 import { BigDecimal } from "@sentio/sdk"
 import { getAddress } from "ethers"
+import { estimateBlockNumberAtDate } from "./crosschainBlocks.js"
+
 
 export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string, predepositUpgradeTimestampMs: number | undefined) {
-    const nowMs = BigInt(ctx.timestamp.getTime())
+    const nowMs = ctx.timestamp.getTime()
+    const nowMsBigInt = BigInt(nowMs)
     vaultTokenAddress = getAddress(vaultTokenAddress)
 
     // Skip saving if Pre-Deposit Upgrade not yet enabled
-    if (predepositUpgradeTimestampMs && nowMs < BigInt(predepositUpgradeTimestampMs)) {
-        // console.log(`Skipping token price save at time ${nowMs} for ${vaultTokenAddress} as it's before pre-deposit upgrade`)
+    if (predepositUpgradeTimestampMs && nowMsBigInt < BigInt(predepositUpgradeTimestampMs)) {
+        // console.log(`Skipping token price save at time ${nowMsBigInt} for ${vaultTokenAddress} as it's before pre-deposit upgrade`)
         return
     } else {
-        console.log(`${vaultTokenAddress}, ${nowMs}, ${predepositUpgradeTimestampMs}`)
+        console.log(`${vaultTokenAddress}, ${nowMsBigInt}, ${predepositUpgradeTimestampMs}`)
     }
 
     // This is taken exclusively from the Lyra Chain
-    const vaultTokenContract = getLyraVaultTokenContractOnContext(ctx, vaultTokenAddress)
-    vaultTokenContract.address = vaultTokenAddress
+    const vaultTokenContract = getLyraVaultTokenContract(EthChainId.BITLAYER, vaultTokenAddress)
     try {
-        const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000")).scaleDown(18)
+        const lyraProvider = getProvider(EthChainId.BITLAYER)
+        const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
+        const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000", { blockTag: lyraBlock })).scaleDown(18)
         console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)
         await ctx.store.upsert(new LyraVaultTokenPrice({
-            id: `${vaultTokenAddress}-${nowMs}`,
+            id: `${vaultTokenAddress}-${nowMsBigInt}`,
             vaultAddress: vaultTokenAddress,
-            timestampMs: nowMs,
+            timestampMs: nowMsBigInt,
             vaultToUnderlying: shareToUnderlying
         }))
 
-        // For 0xec68928bd83B2E52fF5A8e8c215B6ea72879F521 got 1.006266950425962837 (1.6266950425962837)
-
     } catch (e) {
-        console.log(`Error calling getSharesValue for ${vaultTokenAddress} at ${nowMs}: ${e.message}`)
+        console.log(`Error calling getSharesValue for ${vaultTokenAddress} at ${nowMsBigInt}: ${e.message}`)
         return
     }
 }

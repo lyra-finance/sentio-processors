@@ -5,6 +5,7 @@ import { LyraVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils/userSnapshotsAndPoints.js'
 import { LyraVaultTokenProcessor } from './types/eth/lyravaulttoken.js'
 import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
+import { GlobalProcessor } from '@sentio/sdk/eth'
 
 /////////////////
 // Methodology //
@@ -107,33 +108,24 @@ ERC20Processor.bind(
 // Lyra Chain Vault Token Price Binds //
 ////////////////////////////////////////
 
-// NOTE: Overriding BITLAYER as LYRA CHAIN in sentio.yaml
-LyraVaultTokenProcessor.bind(
-  { address: LYRA_VAULTS.WETHC.lyra, network: EthChainId.BITLAYER }
+GlobalProcessor.bind(
+  { network: EthChainId.ARBITRUM }
+).onTimeInterval(async (_, ctx) => {
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHC.lyra, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHCS.lyra, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHBULL.lyra, LYRA_VAULTS.WETHBULL.predepositUpgradeTimestampMs)
+},
+  60 * 24,
+  60 * 24
 )
-  .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
-  },
-    60 * 24,
-    60 * 24
-  )
 
-LyraVaultTokenProcessor.bind(
-  { address: LYRA_VAULTS.WETHCS.lyra, network: EthChainId.BITLAYER }
+GlobalProcessor.bind(
+  { network: EthChainId.ETHEREUM }
+).onTimeInterval(async (_, ctx) => {
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHC.lyra, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHCS.lyra, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)
+  await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHBULL.lyra, LYRA_VAULTS.WETHBULL.predepositUpgradeTimestampMs)
+},
+  60 * 24,
+  60 * 24
 )
-  .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)
-  },
-    60 * 24,
-    60 * 24
-  )
-
-LyraVaultTokenProcessor.bind(
-  { address: LYRA_VAULTS.WETHBULL.lyra, network: EthChainId.BITLAYER }
-)
-  .onTimeInterval(async (_, ctx) => {
-    await saveCurrentVaultTokenPrice(ctx, ctx.address, LYRA_VAULTS.WETHBULL.predepositUpgradeTimestampMs)
-  },
-    60 * 24,
-    60 * 24
-  )

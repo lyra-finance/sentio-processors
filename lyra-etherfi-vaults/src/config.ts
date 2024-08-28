@@ -10,6 +10,9 @@ type VaultDetails = {
     predepositUpgradeTimestampMs: number | undefined;
 };
 
+export const ARB_START_BLOCK = 217000000;
+export const MAINNET_START_BLOCK = 20000000;
+
 export const LYRA_VAULTS: Record<string, VaultDetails> = {
     WETHC: {
         mainnet: "0xcAe44C93f7B3b519Fc28f9d4F7Ae22dE770a907b",

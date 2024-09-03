@@ -7,7 +7,7 @@ import { getAddress } from "ethers"
 import { estimateBlockNumberAtDate } from "./crosschainBlocks.js"
 
 
-export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddress: string, predepositUpgradeTimestampMs: number | undefined) {
+export async function saveCurrentVaultTokenPrice(ctx: EthContext, deriveChainId: EthChainId, vaultTokenAddress: string, predepositUpgradeTimestampMs: number | undefined) {
     const nowMs = ctx.timestamp.getTime()
     const nowMsBigInt = BigInt(nowMs)
     vaultTokenAddress = getAddress(vaultTokenAddress)
@@ -21,9 +21,9 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultTokenAddr
     }
 
     // This is taken exclusively from the Lyra Chain
-    const vaultTokenContract = getLyraVaultTokenContract(EthChainId.BITLAYER, vaultTokenAddress)
+    const vaultTokenContract = getLyraVaultTokenContract(deriveChainId, vaultTokenAddress)
     try {
-        const lyraProvider = getProvider(EthChainId.BITLAYER)
+        const lyraProvider = getProvider(deriveChainId)
         const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
         const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000", { blockTag: lyraBlock })).scaleDown(18)
         console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)

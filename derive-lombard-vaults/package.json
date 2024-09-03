@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "lyra-lombard-vaults",
+  "name": "derive-lombard-vaults",
   "version": "1.0.0",
   "type": "module",
   "scripts": {

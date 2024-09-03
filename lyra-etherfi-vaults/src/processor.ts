@@ -1,9 +1,8 @@
 import { EthChainId } from '@sentio/sdk/eth'
 import { ERC20Processor } from '@sentio/sdk/eth/builtin'
-import { ARB_START_BLOCK, LYRA_VAULTS, MAINNET_START_BLOCK } from '../src/config.js'
+import { ARB_VAULT_PRICE_START_BLOCK, LYRA_VAULTS, MAINNET_VAULT_PRICE_START_BLOCK } from '../src/config.js'
 import { LyraVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils/userSnapshotsAndPoints.js'
-import { LyraVaultTokenProcessor } from './types/eth/lyravaulttoken.js'
 import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
 import { GlobalProcessor } from '@sentio/sdk/eth'
 
@@ -127,7 +126,7 @@ ERC20Processor.bind(
 ////////////////////////////////////////
 
 GlobalProcessor.bind(
-  { network: EthChainId.ARBITRUM, startBlock: ARB_START_BLOCK }
+  { network: EthChainId.ARBITRUM, startBlock: ARB_VAULT_PRICE_START_BLOCK }
 ).onTimeInterval(async (_, ctx) => {
   await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHC.lyra, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
   await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHCS.lyra, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)
@@ -138,7 +137,7 @@ GlobalProcessor.bind(
 )
 
 GlobalProcessor.bind(
-  { network: EthChainId.ETHEREUM, startBlock: MAINNET_START_BLOCK }
+  { network: EthChainId.ETHEREUM, startBlock: MAINNET_VAULT_PRICE_START_BLOCK }
 ).onTimeInterval(async (_, ctx) => {
   await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHC.lyra, LYRA_VAULTS.WETHC.predepositUpgradeTimestampMs)
   await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.WETHCS.lyra, LYRA_VAULTS.WETHCS.predepositUpgradeTimestampMs)

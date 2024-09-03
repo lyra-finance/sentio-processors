@@ -1,0 +1,21 @@
+project: derive-lombard-vaults
+
+networkOverrides: 
+
+###########
+# TESTNET #
+###########
+
+  - chain: '167000' # overriding TAIKO into Derive Testnet Chain
+    host: "https://rpc-prod-testnet-0eakp60405.t.conduit.xyz/"
+  - chain: '60808' # overriding BOB with OP SEPOLIA
+    host: "https://sepolia.optimism.io"
+
+
+########
+# PROD #
+########
+
+  - chain: '200901' # overriding BITLAYER into Derive Mainnet Chain
+    host: "https://rpc.lyra.finance"
+  

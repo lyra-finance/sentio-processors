@@ -1,11 +1,11 @@
-import { EthContext, isNullAddress } from "@sentio/sdk/eth";
+import { EthChainId, EthContext, isNullAddress } from "@sentio/sdk/eth";
 import { erc20 } from "@sentio/sdk/eth/builtin";
 import { LyraVaultUserSnapshot } from "../schema/store.js";
-import { EIGENLAYER_POINTS_PER_DAY, ETHERFI_POINTS_PER_DAY, LYRA_VAULTS, MILLISECONDS_PER_DAY } from "../config.js";
+import { BABYLON_POINTS_PER_DAY, LOMBARD_POINTS_PER_DAY, LYRA_VAULTS, MILLISECONDS_PER_DAY, VaultName } from "../config.js";
 import { toUnderlyingBalance } from "./vaultTokenPrice.js";
 import { getAddress } from "ethers";
 
-export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultName: string, vaultTokenAddress: string, owner: string) {
+export async function updateUserSnapshotAndEmitPointUpdate(ctx: EthContext, vaultName: keyof typeof LYRA_VAULTS, vaultTokenAddress: string, owner: string) {
     let [oldSnapshot, newSnapshot] = await updateLyraVaultUserSnapshot(ctx, vaultName, vaultTokenAddress, owner)
     emitUserPointUpdate(ctx, oldSnapshot, newSnapshot)
 }
@@ -39,7 +39,7 @@ export async function updateLyraVaultUserSnapshot(ctx: EthContext, vaultName: ke
         {
             id: `${owner}-${vaultTokenAddress}`,
             owner: owner,
-            vaultName: vaultName,
+            vaultName: vaultName.toString(),
             vaultAddress: vaultTokenAddress,
             timestampMs: currentTimestampMs,
             vaultBalance: currentShareBalance,
@@ -58,8 +58,8 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
     if (lastSnapshot.vaultBalance.isZero()) return;
 
     const elapsedDays = (Number(newSnapshot.timestampMs) - Number(lastSnapshot.timestampMs)) / MILLISECONDS_PER_DAY
-    const earnedEtherfiPoints = elapsedDays * ETHERFI_POINTS_PER_DAY * lastSnapshot.underlyingEffectiveBalance.toNumber()
-    const earnedEigenlayerPoints = elapsedDays * EIGENLAYER_POINTS_PER_DAY * lastSnapshot.underlyingEffectiveBalance.toNumber()
+    const earnedEtherfiPoints = elapsedDays * LOMBARD_POINTS_PER_DAY * lastSnapshot.underlyingEffectiveBalance.toNumber()
+    const earnedEigenlayerPoints = elapsedDays * BABYLON_POINTS_PER_DAY * lastSnapshot.underlyingEffectiveBalance.toNumber()
     ctx.eventLogger.emit("point_update", {
         account: lastSnapshot.owner,
         vaultAddress: lastSnapshot.vaultAddress,
@@ -73,5 +73,7 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: LyraVaultUser
         newTimestampMs: newSnapshot.timestampMs,
         newVaultBalance: newSnapshot.vaultBalance,
         newunderlyingEffectiveBalance: newSnapshot.underlyingEffectiveBalance,
+        // testnet vs prod
+        is_mainnet: ctx.chainId === EthChainId.ETHEREUM,
     });
 }

@@ -1,0 +1,16 @@
+type LyraVaultUserSnapshot @entity {
+    id: ID!
+    owner: String!
+    vaultName: String!
+    vaultAddress: String!
+    timestampMs: BigInt!
+    vaultBalance: BigDecimal!
+    underlyingEffectiveBalance: BigDecimal!
+}
+
+type LyraVaultTokenPrice @entity {
+    id: ID!
+    vaultAddress: String!
+    timestampMs: BigInt!
+    vaultToUnderlying: BigDecimal!
+}

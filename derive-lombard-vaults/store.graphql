@@ -1,4 +1,4 @@
-type LyraVaultUserSnapshot @entity {
+type DeriveVaultUserSnapshot @entity {
     id: ID!
     owner: String!
     vaultName: String!
@@ -8,7 +8,7 @@ type LyraVaultUserSnapshot @entity {
     underlyingEffectiveBalance: BigDecimal!
 }
 
-type LyraVaultTokenPrice @entity {
+type DeriveVaultTokenPrice @entity {
     id: ID!
     vaultAddress: String!
     timestampMs: BigInt!

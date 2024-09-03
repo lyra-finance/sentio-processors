@@ -1,7 +1,7 @@
 import { EthChainId } from '@sentio/sdk/eth'
 import { ERC20Processor } from '@sentio/sdk/eth/builtin'
-import { LYRA_VAULTS, MAINNET_VAULT_PRICE_START_BLOCK, OP_SEPOLIA_VAULT_PRICE_START_BLOCK, VaultName } from '../src/config.js'
-import { LyraVaultUserSnapshot } from '../src/schema/store.js'
+import { DERIVE_VAULTS, MAINNET_VAULT_PRICE_START_BLOCK, OP_SEPOLIA_VAULT_PRICE_START_BLOCK, VaultName } from '../src/config.js'
+import { DeriveVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils/userSnapshotsAndPoints.js'
 import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
 import { GlobalProcessor } from '@sentio/sdk/eth'
@@ -12,12 +12,12 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 
 
 // Snapshots
-// - At every transfer event or time interval, we save the latest `LyraVaultUserSnapshot` of a user in `sentio.ctx.store`
-// - For each token, once per day store `LyraVaultTokenPrice` price
+// - At every transfer event or time interval, we save the latest `DeriveVaultUserSnapshot` of a user in `sentio.ctx.store`
+// - For each token, once per day store `DeriveVaultTokenPrice` price
 
 // Events
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
-
+// 4. At every time interval, save a snapshot of user balances
 
 
 /////////////////////////////////
@@ -25,8 +25,8 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 /////////////////////////////////
 
 for (const params of [
-  LYRA_VAULTS.LBTCPS,
-  LYRA_VAULTS.LBTCPS_TESTNET,
+  DERIVE_VAULTS.LBTCPS,
+  DERIVE_VAULTS.LBTCPS_TESTNET,
 ]) {
   ERC20Processor.bind(
     { address: params.mainnet_or_opsep, network: params.destinationChainId }
@@ -38,7 +38,7 @@ for (const params of [
     })
     // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
     .onTimeInterval(async (_, ctx) => {
-      const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
+      const userSnapshots: DeriveVaultUserSnapshot[] = await ctx.store.list(DeriveVaultUserSnapshot, []);
 
       try {
         const promises = [];
@@ -59,8 +59,8 @@ for (const params of [
 
 
 for (const params of [
-  LYRA_VAULTS.LBTCCS,
-  LYRA_VAULTS.LBTCCS_TESTNET,
+  DERIVE_VAULTS.LBTCCS,
+  DERIVE_VAULTS.LBTCCS_TESTNET,
 ]) {
   ERC20Processor.bind({ address: params.mainnet_or_opsep, network: params.destinationChainId })
     .onEventTransfer(async (event, ctx) => {
@@ -82,11 +82,11 @@ for (const params of [
     params
   ).onTimeInterval(async (_, ctx) => {
     if (params.network === EthChainId.ETHEREUM) {
-      await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.LBTCPS.deriveChainId, LYRA_VAULTS.LBTCPS.lyra, LYRA_VAULTS.LBTCPS.predepositUpgradeTimestampMs)
-      await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.LBTCCS.deriveChainId, LYRA_VAULTS.LBTCCS.lyra, LYRA_VAULTS.LBTCCS.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS.deriveChainId, DERIVE_VAULTS.LBTCPS.derive, DERIVE_VAULTS.LBTCPS.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS.deriveChainId, DERIVE_VAULTS.LBTCCS.derive, DERIVE_VAULTS.LBTCCS.predepositUpgradeTimestampMs)
     } else {
-      await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.LBTCPS_TESTNET.deriveChainId, LYRA_VAULTS.LBTCPS_TESTNET.lyra, LYRA_VAULTS.LBTCPS_TESTNET.predepositUpgradeTimestampMs)
-      await saveCurrentVaultTokenPrice(ctx, LYRA_VAULTS.LBTCCS_TESTNET.deriveChainId, LYRA_VAULTS.LBTCCS_TESTNET.lyra, LYRA_VAULTS.LBTCCS_TESTNET.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCPS_TESTNET.derive, DERIVE_VAULTS.LBTCPS_TESTNET.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCCS_TESTNET.derive, DERIVE_VAULTS.LBTCCS_TESTNET.predepositUpgradeTimestampMs)
     }
   },
     60 * 24,

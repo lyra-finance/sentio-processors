@@ -12,8 +12,8 @@ import { DatabaseSchema } from '@sentio/sdk'
 
 
 
-@Entity("LyraVaultUserSnapshot")
-export class LyraVaultUserSnapshot extends AbstractEntity  {
+@Entity("DeriveVaultUserSnapshot")
+export class DeriveVaultUserSnapshot extends AbstractEntity  {
 
 	@Required
 	@Column("ID")
@@ -42,11 +42,11 @@ export class LyraVaultUserSnapshot extends AbstractEntity  {
 	@Required
 	@Column("BigDecimal")
 	underlyingEffectiveBalance: BigDecimal
-  constructor(data: Partial<LyraVaultUserSnapshot>) {super()}
+  constructor(data: Partial<DeriveVaultUserSnapshot>) {super()}
 }
 
-@Entity("LyraVaultTokenPrice")
-export class LyraVaultTokenPrice extends AbstractEntity  {
+@Entity("DeriveVaultTokenPrice")
+export class DeriveVaultTokenPrice extends AbstractEntity  {
 
 	@Required
 	@Column("ID")
@@ -63,11 +63,11 @@ export class LyraVaultTokenPrice extends AbstractEntity  {
 	@Required
 	@Column("BigDecimal")
 	vaultToUnderlying: BigDecimal
-  constructor(data: Partial<LyraVaultTokenPrice>) {super()}
+  constructor(data: Partial<DeriveVaultTokenPrice>) {super()}
 }
 
 
-const source = `type LyraVaultUserSnapshot @entity {
+const source = `type DeriveVaultUserSnapshot @entity {
     id: ID!
     owner: String!
     vaultName: String!
@@ -77,7 +77,7 @@ const source = `type LyraVaultUserSnapshot @entity {
     underlyingEffectiveBalance: BigDecimal!
 }
 
-type LyraVaultTokenPrice @entity {
+type DeriveVaultTokenPrice @entity {
     id: ID!
     vaultAddress: String!
     timestampMs: BigInt!
@@ -86,7 +86,7 @@ type LyraVaultTokenPrice @entity {
 DatabaseSchema.register({
   source,
   entities: {
-    "LyraVaultUserSnapshot": LyraVaultUserSnapshot,
-		"LyraVaultTokenPrice": LyraVaultTokenPrice
+    "DeriveVaultUserSnapshot": DeriveVaultUserSnapshot,
+		"DeriveVaultTokenPrice": DeriveVaultTokenPrice
   }
 })

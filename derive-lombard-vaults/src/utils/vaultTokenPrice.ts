@@ -1,6 +1,6 @@
 import { EthChainId, EthContext, getProvider } from "@sentio/sdk/eth"
-import { LyraVaultTokenPrice } from "../schema/store.js"
-import { getLyraVaultTokenContract, getLyraVaultTokenContractOnContext } from "../types/eth/lyravaulttoken.js"
+import { DeriveVaultTokenPrice } from "../schema/store.js"
+import { getDeriveVaultTokenContract } from "../types/eth/derivevaulttoken.js"
 import { MILLISECONDS_PER_DAY } from "../config.js"
 import { BigDecimal } from "@sentio/sdk"
 import { getAddress } from "ethers"
@@ -21,13 +21,13 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, deriveChainId:
     }
 
     // This is taken exclusively from the Lyra Chain
-    const vaultTokenContract = getLyraVaultTokenContract(deriveChainId, vaultTokenAddress)
+    const vaultTokenContract = getDeriveVaultTokenContract(deriveChainId, vaultTokenAddress)
     try {
         const lyraProvider = getProvider(deriveChainId)
         const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
         const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000", { blockTag: lyraBlock })).scaleDown(18)
         console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)
-        await ctx.store.upsert(new LyraVaultTokenPrice({
+        await ctx.store.upsert(new DeriveVaultTokenPrice({
             id: `${vaultTokenAddress}-${nowMsBigInt}`,
             vaultAddress: vaultTokenAddress,
             timestampMs: nowMsBigInt,
@@ -46,14 +46,14 @@ export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string,
     // Gets closest vault token price +/- 1 day
     const upperBound = snapshotTimestampMs + BigInt(MILLISECONDS_PER_DAY * 5)
     const lowerBound = snapshotTimestampMs - BigInt(MILLISECONDS_PER_DAY * 5)
-    const pricesNearby = await ctx.store.list(LyraVaultTokenPrice, [
+    const pricesNearby = await ctx.store.list(DeriveVaultTokenPrice, [
         { field: "vaultAddress", op: "=", value: vaultAddress },
         { field: "timestampMs", op: "<", value: upperBound },
         { field: "timestampMs", op: ">", value: lowerBound }
     ])
 
     console.log(`Looking through prices nearby for vault ${vaultAddress} with length ${pricesNearby.length} at timestamp ${snapshotTimestampMs} with bounds ${lowerBound} and ${upperBound}`)
-    let tokenPriceWithinBounds: LyraVaultTokenPrice | undefined = await _find_closest_snapshot(pricesNearby, snapshotTimestampMs)
+    let tokenPriceWithinBounds: DeriveVaultTokenPrice | undefined = await _find_closest_snapshot(pricesNearby, snapshotTimestampMs)
 
     // handle the last batch
     if (!tokenPriceWithinBounds) {
@@ -63,8 +63,8 @@ export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string,
     return tokenPriceWithinBounds.vaultToUnderlying.multipliedBy(vaultBalance)
 }
 
-async function _find_closest_snapshot(pricesNearby: LyraVaultTokenPrice[], snapshotTimestampMs: bigint): Promise<LyraVaultTokenPrice | undefined> {
-    let tokenPriceWithinBounds: LyraVaultTokenPrice | undefined;
+async function _find_closest_snapshot(pricesNearby: DeriveVaultTokenPrice[], snapshotTimestampMs: bigint): Promise<DeriveVaultTokenPrice | undefined> {
+    let tokenPriceWithinBounds: DeriveVaultTokenPrice | undefined;
     let timestampDiff = BigInt(Number.MAX_SAFE_INTEGER)
     for (const tokenPrice of pricesNearby) {
         let diff = snapshotTimestampMs - tokenPrice.timestampMs

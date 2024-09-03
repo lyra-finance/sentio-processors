@@ -1,7 +1,7 @@
 import { EthChainId } from '@sentio/sdk/eth'
 import { ERC20Processor } from '@sentio/sdk/eth/builtin'
 import { ARB_VAULT_PRICE_START_BLOCK, LYRA_VAULTS, MAINNET_VAULT_PRICE_START_BLOCK } from '../src/config.js'
-import { LyraVaultUserSnapshot } from '../src/schema/store.js'
+import { DeriveVaultUserSnapshot } from '../src/schema/store.js'
 import { updateUserSnapshotAndEmitPointUpdate } from './utils/userSnapshotsAndPoints.js'
 import { saveCurrentVaultTokenPrice } from './utils/vaultTokenPrice.js'
 import { GlobalProcessor } from '@sentio/sdk/eth'
@@ -12,8 +12,8 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 
 
 // Snapshots
-// - At every transfer event or time interval, we save the latest `LyraVaultUserSnapshot` of a user in `sentio.ctx.store`
-// - For each token, once per day store `LyraVaultTokenPrice` price in terms of LBTC / dollars (TODO: Lyra chain not supported yet, assume 1:1)
+// - At every transfer event or time interval, we save the latest `DeriveVaultUserSnapshot` of a user in `sentio.ctx.store`
+// - For each token, once per day store `DeriveVaultTokenPrice` price in terms of LBTC / dollars (TODO: Lyra chain not supported yet, assume 1:1)
 
 // Events
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
@@ -33,7 +33,7 @@ ERC20Processor.bind(
   })
   // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
   .onTimeInterval(async (_, ctx) => {
-    const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
+    const userSnapshots: DeriveVaultUserSnapshot[] = await ctx.store.list(DeriveVaultUserSnapshot, []);
 
     try {
       const promises = [];
@@ -84,7 +84,7 @@ ERC20Processor.bind(
   })
   // this time interval handles all three vaults (weETHC, weETHCS, weETHBULL)
   .onTimeInterval(async (_, ctx) => {
-    const userSnapshots: LyraVaultUserSnapshot[] = await ctx.store.list(LyraVaultUserSnapshot, []);
+    const userSnapshots: DeriveVaultUserSnapshot[] = await ctx.store.list(DeriveVaultUserSnapshot, []);
 
     try {
       const promises = [];

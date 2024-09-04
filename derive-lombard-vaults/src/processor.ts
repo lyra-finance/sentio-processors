@@ -10,7 +10,6 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 // Methodology //
 /////////////////
 
-
 // Snapshots
 // - At every transfer event or time interval, we save the latest `DeriveVaultUserSnapshot` of a user in `sentio.ctx.store`
 // - For each token, once per day store `DeriveVaultTokenPrice` price
@@ -52,8 +51,8 @@ for (const params of [
         console.log("onTimeInterval error", e.message, ctx.timestamp);
       }
     },
-      60 * 24,
-      60 * 24 // backfill at 1 day
+      60 * 4,
+      60 * 4 // backfill at 1 day
     )
 }
 
@@ -89,7 +88,7 @@ for (const params of [
       await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCCS_TESTNET.derive, DERIVE_VAULTS.LBTCCS_TESTNET.predepositUpgradeTimestampMs)
     }
   },
-    60 * 24,
-    60 * 24
+    60 * 4,
+    60 * 4
   )
 }

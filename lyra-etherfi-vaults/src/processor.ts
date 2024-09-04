@@ -19,6 +19,10 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
 
 
+////////////////////////
+// Config Validations //
+////////////////////////
+
 ///////////////////
 // Mainnet Binds //
 ///////////////////

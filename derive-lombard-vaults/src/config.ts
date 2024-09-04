@@ -4,6 +4,10 @@ export const MILLISECONDS_PER_DAY = 60 * 60 * 1000 * 24;
 export const LOMBARD_POINTS_PER_DAY = 20000
 export const BABYLON_POINTS_PER_DAY = 21
 
+export const SEASONS: [string, number | undefined][] = [
+    ["season_1", undefined] // end of each season in UTC ms
+]
+
 export enum VaultName {
     LBTCPS = "LBTCPS",
     LBTCCS = "LBTCCS",

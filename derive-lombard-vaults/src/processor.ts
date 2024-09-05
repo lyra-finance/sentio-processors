@@ -51,8 +51,8 @@ for (const params of [
         console.log("onTimeInterval error", e.message, ctx.timestamp);
       }
     },
-      60 * 4,
-      60 * 4 // backfill at 1 day
+      60 * 1,
+      60 * 1 // backfill at 1 hour
     )
 }
 
@@ -88,7 +88,7 @@ for (const params of [
       await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCCS_TESTNET.derive, DERIVE_VAULTS.LBTCCS_TESTNET.predepositUpgradeTimestampMs)
     }
   },
-    60 * 4,
-    60 * 4
+    60 * 1,
+    60 * 1
   )
 }

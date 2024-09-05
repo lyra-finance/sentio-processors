@@ -27,7 +27,7 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultDetails: 
     try {
         const lyraProvider = getProvider(deriveChainId)
         const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
-        const oneShare = BigInt(10) ** BigInt(vaultDetails.vaultDecimals)
+        const oneShare = '1' + '0'.repeat(vaultDetails.vaultDecimals);
         const shareToUnderlying = (await vaultTokenContract.getSharesValue(oneShare, { blockTag: lyraBlock })).scaleDown(vaultDetails.underlyingDecimals)
         console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)
         await ctx.store.upsert(new DeriveVaultTokenPrice({

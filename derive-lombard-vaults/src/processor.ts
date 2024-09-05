@@ -81,11 +81,11 @@ for (const params of [
     params
   ).onTimeInterval(async (_, ctx) => {
     if (params.network === EthChainId.ETHEREUM) {
-      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS.deriveChainId, DERIVE_VAULTS.LBTCPS.derive, DERIVE_VAULTS.LBTCPS.predepositUpgradeTimestampMs)
-      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS.deriveChainId, DERIVE_VAULTS.LBTCCS.derive, DERIVE_VAULTS.LBTCCS.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS)
     } else {
-      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCPS_TESTNET.derive, DERIVE_VAULTS.LBTCPS_TESTNET.predepositUpgradeTimestampMs)
-      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS_TESTNET.deriveChainId, DERIVE_VAULTS.LBTCCS_TESTNET.derive, DERIVE_VAULTS.LBTCCS_TESTNET.predepositUpgradeTimestampMs)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCPS_TESTNET)
+      await saveCurrentVaultTokenPrice(ctx, DERIVE_VAULTS.LBTCCS_TESTNET)
     }
   },
     60 * 1,

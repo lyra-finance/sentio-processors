@@ -18,7 +18,7 @@ export async function updateDeriveVaultUserSnapshot(ctx: EthContext, vaultName: 
 
     const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)
     let currentTimestampMs = BigInt(ctx.timestamp.getTime())
-    let currentShareBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(18)
+    let currentShareBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(DERIVE_VAULTS[vaultName].vaultDecimals)
     let underlyingBalance = await toUnderlyingBalance(ctx, DERIVE_VAULTS[vaultName].derive, currentShareBalance, currentTimestampMs)
 
     let lastSnapshot = await ctx.store.get(DeriveVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)

@@ -1,16 +1,18 @@
 import { EthChainId, EthContext, getProvider } from "@sentio/sdk/eth"
 import { DeriveVaultTokenPrice } from "../schema/store.js"
 import { getDeriveVaultTokenContract } from "../types/eth/derivevaulttoken.js"
-import { MILLISECONDS_PER_DAY } from "../config.js"
+import { MILLISECONDS_PER_DAY, VaultDetails } from "../config.js"
 import { BigDecimal } from "@sentio/sdk"
 import { getAddress } from "ethers"
 import { estimateBlockNumberAtDate } from "./crosschainBlocks.js"
 
 
-export async function saveCurrentVaultTokenPrice(ctx: EthContext, deriveChainId: EthChainId, vaultTokenAddress: string, predepositUpgradeTimestampMs: number | undefined) {
+export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultDetails: VaultDetails) {
     const nowMs = ctx.timestamp.getTime()
     const nowMsBigInt = BigInt(nowMs)
-    vaultTokenAddress = getAddress(vaultTokenAddress)
+    const vaultTokenAddress = getAddress(vaultDetails.derive)
+    const deriveChainId = vaultDetails.deriveChainId
+    const predepositUpgradeTimestampMs = vaultDetails.predepositUpgradeTimestampMs
 
     // Skip saving if Pre-Deposit Upgrade not yet enabled
     if (predepositUpgradeTimestampMs && nowMsBigInt < BigInt(predepositUpgradeTimestampMs)) {
@@ -25,7 +27,8 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, deriveChainId:
     try {
         const lyraProvider = getProvider(deriveChainId)
         const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
-        const shareToUnderlying = (await vaultTokenContract.getSharesValue("1000000000000000000", { blockTag: lyraBlock })).scaleDown(18)
+        const oneShare = BigInt(10) ** BigInt(vaultDetails.vaultDecimals)
+        const shareToUnderlying = (await vaultTokenContract.getSharesValue(oneShare, { blockTag: lyraBlock })).scaleDown(vaultDetails.underlyingDecimals)
         console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)
         await ctx.store.upsert(new DeriveVaultTokenPrice({
             id: `${vaultTokenAddress}-${nowMsBigInt}`,

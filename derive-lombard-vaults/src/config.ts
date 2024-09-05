@@ -15,7 +15,7 @@ export enum VaultName {
     LBTCCS_TESTNET = "LBTCCS_TESTNET"
 }
 
-type VaultDetails = {
+export type VaultDetails = {
     vaultName: VaultName;
     destinationChainId: EthChainId;
     deriveChainId: EthChainId;
@@ -23,6 +23,8 @@ type VaultDetails = {
     // arb: string;
     derive: string;
     predepositUpgradeTimestampMs: number | undefined;
+    vaultDecimals: number;
+    underlyingDecimals: number;
 };
 
 /////////////
@@ -48,7 +50,9 @@ export const DERIVE_VAULTS: Record<VaultName, VaultDetails> = {
         mainnet_or_opsep: "0x367711f0377867b51Fe53e30F5125a9A31d3D50b",
         // arb: "???",
         derive: "0x5Fc48A32437Ff4BBab2A22646c3c9344ba003971",
-        predepositUpgradeTimestampMs: undefined
+        predepositUpgradeTimestampMs: undefined,
+        vaultDecimals: 8,
+        underlyingDecimals: 8
     },
     LBTCCS: {
         vaultName: VaultName.LBTCCS,
@@ -57,7 +61,9 @@ export const DERIVE_VAULTS: Record<VaultName, VaultDetails> = {
         mainnet_or_opsep: "0x5a27765DbE2476240B1265A305c2e3554fD3f341",
         // arb: "0xb7F56c1a952D3AE664A83971BFfa5c1706947dBD",
         derive: "0xbCab1f8BbA323BC55EA8cfaC34edAcf8DBE92dD4",
-        predepositUpgradeTimestampMs: undefined
+        predepositUpgradeTimestampMs: undefined,
+        vaultDecimals: 8,
+        underlyingDecimals: 8
     },
     LBTCPS_TESTNET: {
         vaultName: VaultName.LBTCPS_TESTNET,
@@ -66,7 +72,9 @@ export const DERIVE_VAULTS: Record<VaultName, VaultDetails> = {
         mainnet_or_opsep: "0x062F93b9bD9ceb50dcdb1230A9e89CBA36157C33",
         // arb: "???",
         derive: "0x49B9C82582B9916dE295D98b0c55373c300BbaEa",
-        predepositUpgradeTimestampMs: undefined
+        predepositUpgradeTimestampMs: undefined,
+        vaultDecimals: 8,
+        underlyingDecimals: 8
     },
     LBTCCS_TESTNET: {
         vaultName: VaultName.LBTCCS_TESTNET,
@@ -75,7 +83,9 @@ export const DERIVE_VAULTS: Record<VaultName, VaultDetails> = {
         mainnet_or_opsep: "0x84D8b20275724f31130F76Ecf42a501eDF72C1e0",
         // arb: "???",
         derive: "0x65410Dd3A47f7cdfFd0486D45688F00B142029D7",
-        predepositUpgradeTimestampMs: undefined
+        predepositUpgradeTimestampMs: undefined,
+        vaultDecimals: 8,
+        underlyingDecimals: 8
     }
 }
 

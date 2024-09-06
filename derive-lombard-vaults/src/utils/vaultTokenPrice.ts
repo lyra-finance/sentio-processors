@@ -29,21 +29,29 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultDetails: 
         const lyraBlock = await estimateBlockNumberAtDate(lyraProvider, new Date(nowMs))
         const oneShare = '1' + '0'.repeat(vaultDetails.vaultDecimals);
         const shareToUnderlying = (await vaultTokenContract.getSharesValue(oneShare, { blockTag: lyraBlock })).scaleDown(vaultDetails.underlyingDecimals)
-        console.log(`For ${vaultTokenAddress} got ${shareToUnderlying}`)
+        console.log(`For ${vaultDetails.vaultName} got ${shareToUnderlying}`)
         await ctx.store.upsert(new DeriveVaultTokenPrice({
             id: `${vaultTokenAddress}-${nowMsBigInt}`,
             vaultAddress: vaultTokenAddress,
+            vaultName: vaultDetails.vaultName,
             timestampMs: nowMsBigInt,
             vaultToUnderlying: shareToUnderlying
         }))
 
+        ctx.eventLogger.emit("vault_price_update", {
+            vaultAddress: vaultDetails.derive,
+            vaultName: vaultDetails.vaultName,
+            timestampMs: nowMs,
+        });
+
     } catch (e) {
-        console.log(`Error calling getSharesValue for ${vaultTokenAddress} at ${nowMsBigInt}: ${e.message}`)
+        console.log(`Error calling getSharesValue for ${vaultDetails.vaultName} at ${nowMsBigInt}: ${e.message}`)
         return
     }
 }
 
-export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string, vaultBalance: BigDecimal, snapshotTimestampMs: bigint): Promise<BigDecimal> {
+
+export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string, vaultBalance: BigDecimal, snapshotTimestampMs: bigint): Promise<[BigDecimal, BigDecimal]> {
     vaultAddress = getAddress(vaultAddress)
 
     // Gets closest vault token price +/- 1 day
@@ -60,10 +68,10 @@ export async function toUnderlyingBalance(ctx: EthContext, vaultAddress: string,
 
     // handle the last batch
     if (!tokenPriceWithinBounds) {
-        return vaultBalance
+        return [vaultBalance, BigDecimal(1)]
     }
     console.log(`Found token price within bounds for vault ${vaultAddress}`)
-    return tokenPriceWithinBounds.vaultToUnderlying.multipliedBy(vaultBalance)
+    return [tokenPriceWithinBounds.vaultToUnderlying.multipliedBy(vaultBalance), tokenPriceWithinBounds.vaultToUnderlying]
 }
 
 async function _find_closest_snapshot(pricesNearby: DeriveVaultTokenPrice[], snapshotTimestampMs: bigint): Promise<DeriveVaultTokenPrice | undefined> {
@@ -80,3 +88,4 @@ async function _find_closest_snapshot(pricesNearby: DeriveVaultTokenPrice[], sna
     }
     return tokenPriceWithinBounds
 }
+

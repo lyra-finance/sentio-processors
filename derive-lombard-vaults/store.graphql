@@ -6,11 +6,13 @@ type DeriveVaultUserSnapshot @entity {
     timestampMs: BigInt!
     vaultBalance: BigDecimal!
     underlyingEffectiveBalance: BigDecimal!
+    vaultToUnderlying: BigDecimal!
 }
 
 type DeriveVaultTokenPrice @entity {
     id: ID!
     vaultAddress: String!
+    vaultName: String!
     timestampMs: BigInt!
     vaultToUnderlying: BigDecimal!
 }

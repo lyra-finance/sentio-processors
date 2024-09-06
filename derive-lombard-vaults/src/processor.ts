@@ -10,13 +10,13 @@ import { GlobalProcessor } from '@sentio/sdk/eth'
 // Methodology //
 /////////////////
 
-// Snapshots
+// DBs Snapshots
 // - At every transfer event or time interval, we save the latest `DeriveVaultUserSnapshot` of a user in `sentio.ctx.store`
 // - For each token, once per day store `DeriveVaultTokenPrice` price
 
 // Events
 // 3. At every transfer event or time interval, we emit a `point_update` event which saves the points earned by user for the last hour
-// 4. At every time interval, save a snapshot of user balances
+// 4. At every time interval, save `token_price_update`
 
 
 /////////////////////////////////

@@ -42,6 +42,10 @@ export class DeriveVaultUserSnapshot extends AbstractEntity  {
 	@Required
 	@Column("BigDecimal")
 	underlyingEffectiveBalance: BigDecimal
+
+	@Required
+	@Column("BigDecimal")
+	vaultToUnderlying: BigDecimal
   constructor(data: Partial<DeriveVaultUserSnapshot>) {super()}
 }
 
@@ -55,6 +59,10 @@ export class DeriveVaultTokenPrice extends AbstractEntity  {
 	@Required
 	@Column("String")
 	vaultAddress: String
+
+	@Required
+	@Column("String")
+	vaultName: String
 
 	@Required
 	@Column("BigInt")
@@ -75,11 +83,13 @@ const source = `type DeriveVaultUserSnapshot @entity {
     timestampMs: BigInt!
     vaultBalance: BigDecimal!
     underlyingEffectiveBalance: BigDecimal!
+    vaultToUnderlying: BigDecimal!
 }
 
 type DeriveVaultTokenPrice @entity {
     id: ID!
     vaultAddress: String!
+    vaultName: String!
     timestampMs: BigInt!
     vaultToUnderlying: BigDecimal!
 }`

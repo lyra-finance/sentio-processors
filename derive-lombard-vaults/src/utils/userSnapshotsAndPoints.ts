@@ -19,7 +19,7 @@ export async function updateDeriveVaultUserSnapshot(ctx: EthContext, vaultName: 
     const vaultTokenContractView = erc20.getERC20ContractOnContext(ctx, vaultTokenAddress)
     let currentTimestampMs = BigInt(ctx.timestamp.getTime())
     let currentShareBalance = (await vaultTokenContractView.balanceOf(owner)).scaleDown(DERIVE_VAULTS[vaultName].vaultDecimals)
-    let underlyingBalance = await toUnderlyingBalance(ctx, DERIVE_VAULTS[vaultName].derive, currentShareBalance, currentTimestampMs)
+    let [underlyingBalance, vaultToUnderlying] = await toUnderlyingBalance(ctx, DERIVE_VAULTS[vaultName].derive, currentShareBalance, currentTimestampMs)
 
     let lastSnapshot = await ctx.store.get(DeriveVaultUserSnapshot, `${owner}-${vaultTokenAddress}`)
 
@@ -32,7 +32,8 @@ export async function updateDeriveVaultUserSnapshot(ctx: EthContext, vaultName: 
             vaultAddress: lastSnapshot.vaultAddress,
             timestampMs: lastSnapshot.timestampMs,
             vaultBalance: lastSnapshot.vaultBalance,
-            underlyingEffectiveBalance: lastSnapshot.underlyingEffectiveBalance
+            underlyingEffectiveBalance: lastSnapshot.underlyingEffectiveBalance,
+            vaultToUnderlying: lastSnapshot.vaultToUnderlying
         })
     }
 
@@ -44,7 +45,8 @@ export async function updateDeriveVaultUserSnapshot(ctx: EthContext, vaultName: 
             vaultAddress: vaultTokenAddress,
             timestampMs: currentTimestampMs,
             vaultBalance: currentShareBalance,
-            underlyingEffectiveBalance: underlyingBalance
+            underlyingEffectiveBalance: underlyingBalance,
+            vaultToUnderlying: vaultToUnderlying
         }
     )
 
@@ -69,11 +71,13 @@ export function emitUserPointUpdate(ctx: EthContext, lastSnapshot: DeriveVaultUs
         // last snapshot
         lastTimestampMs: lastSnapshot.timestampMs,
         lastVaultBalance: lastSnapshot.vaultBalance,
-        lastunderlyingEffectiveBalance: lastSnapshot.underlyingEffectiveBalance,
+        lastUnderlyingEffectiveBalance: lastSnapshot.underlyingEffectiveBalance,
+        lastVaultToUnderlying: lastSnapshot.vaultToUnderlying,
         // new snapshot
         newTimestampMs: newSnapshot.timestampMs,
         newVaultBalance: newSnapshot.vaultBalance,
-        newunderlyingEffectiveBalance: newSnapshot.underlyingEffectiveBalance,
+        newUnderlyingEffectiveBalance: newSnapshot.underlyingEffectiveBalance,
+        newVaultToUnderlying: newSnapshot.vaultToUnderlying,
         // testnet vs prod
         is_mainnet: ctx.chainId === EthChainId.ETHEREUM,
         // season

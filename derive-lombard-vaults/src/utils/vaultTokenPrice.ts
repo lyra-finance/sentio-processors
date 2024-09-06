@@ -41,6 +41,7 @@ export async function saveCurrentVaultTokenPrice(ctx: EthContext, vaultDetails: 
         ctx.eventLogger.emit("vault_price_update", {
             vaultAddress: vaultDetails.derive,
             vaultName: vaultDetails.vaultName,
+            vaultToUnderlying: shareToUnderlying,
             timestampMs: nowMs,
         });
 

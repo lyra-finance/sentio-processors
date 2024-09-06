@@ -31,7 +31,7 @@ export type VaultDetails = {
 // Testnet //
 /////////////
 
-export const OP_SEPOLIA_VAULT_PRICE_START_BLOCK = 16700000; // [OP sepolia] Start calculating from September 1st
+export const OP_SEPOLIA_VAULT_PRICE_START_BLOCK = 16800000; // [OP sepolia] Start calculating from September 3rd
 
 
 ////////////////
@@ -40,7 +40,7 @@ export const OP_SEPOLIA_VAULT_PRICE_START_BLOCK = 16700000; // [OP sepolia] Star
 
 // // export const ARB_VAULT_PRICE_START_BLOCK = 217000000;
 
-export const MAINNET_VAULT_PRICE_START_BLOCK = 20655000; // Start calculating from September 1st
+export const MAINNET_VAULT_PRICE_START_BLOCK = 20670000; // Start calculating from September 3rd
 
 export const DERIVE_VAULTS: Record<VaultName, VaultDetails> = {
     LBTCPS: {

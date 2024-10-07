@@ -1,21 +1,21 @@
 import {
   BalanceAdjusted as BalanceAdjustedEvent
 } from "../generated/subaccounts/SubAccounts"
-import { BalanceAdjusted, UserBalance, User, Asset } from "../generated/schema"
+import { BalanceAdjusted, SubAccountBalance, SubAccount, Asset } from "../generated/schema"
 import { decodeHashWithEthers}  from "./utils"
 import { BigInt,Bytes, BigDecimal } from '@graphprotocol/graph-ts';
 
 const ONE = BigDecimal.fromString('1000000000000000000')
 
 export function handleBalanceAdjusted(event: BalanceAdjustedEvent): void {
-  let userId = event.params.manager
+  let subaccountId = event.params.accountId.toString()
   let assetId = event.params.assetAndSubId
 
   // Handle User entity
-  let user = User.load(userId)
-  if (user == null) {
-    user = new User(userId)
-    user.save()
+  let subaccount = SubAccount.load(subaccountId)
+  if (subaccount == null) {
+    subaccount = new SubAccount(subaccountId)
+    subaccount.save()
   }
 
   // Handle Asset entity
@@ -32,7 +32,7 @@ export function handleBalanceAdjusted(event: BalanceAdjustedEvent): void {
   // Handle BalanceAdjusted entity
   let balanceAdjustedId = event.transaction.hash.concatI32(event.logIndex.toI32())
   let balanceAdjusted = new BalanceAdjusted(balanceAdjustedId)
-  balanceAdjusted.user = userId
+  balanceAdjusted.subaccount = subaccountId
   balanceAdjusted.asset = assetId
   balanceAdjusted.accountId = event.params.accountId
   balanceAdjusted.manager = event.params.manager
@@ -46,16 +46,16 @@ export function handleBalanceAdjusted(event: BalanceAdjustedEvent): void {
   balanceAdjusted.save()
 
   // Handle UserBalance entity
-  let userBalanceId = userId.concat(assetId)
-  let userBalance = UserBalance.load(userBalanceId)
+  let subaccountBalanceId = subaccountId.concat(assetId.toString())
+  let subaccountBalance = SubAccountBalance.load(subaccountBalanceId)
   
-  if (userBalance == null) {
-    userBalance = new UserBalance(userBalanceId)
-    userBalance.user = userId
-    userBalance.asset = assetId
+  if (subaccountBalance == null) {
+    subaccountBalance = new SubAccountBalance(subaccountBalanceId)
+    subaccountBalance.subaccount = subaccountId
+    subaccountBalance.asset = assetId
   }
 
-  userBalance.balance = balanceAdjusted.postBalance
-  userBalance.lastUpdated = event.block.timestamp
-  userBalance.save()
+  subaccountBalance.balance = balanceAdjusted.postBalance
+  subaccountBalance.lastUpdated = event.block.timestamp
+  subaccountBalance.save()
 }

@@ -3,9 +3,9 @@ import {
 } from "../generated/subaccounts/SubAccounts"
 import { BalanceAdjusted, UserBalance, User, Asset } from "../generated/schema"
 import { decodeHashWithEthers}  from "./utils"
-import { BigInt,Bytes } from '@graphprotocol/graph-ts';
+import { BigInt,Bytes, BigDecimal } from '@graphprotocol/graph-ts';
 
-const ONE = BigInt.fromString('1000000000000000000')
+const ONE = BigDecimal.fromString('1000000000000000000')
 
 export function handleBalanceAdjusted(event: BalanceAdjustedEvent): void {
   let userId = event.params.manager
@@ -36,9 +36,9 @@ export function handleBalanceAdjusted(event: BalanceAdjustedEvent): void {
   balanceAdjusted.asset = assetId
   balanceAdjusted.accountId = event.params.accountId
   balanceAdjusted.manager = event.params.manager
-  balanceAdjusted.amount = event.params.amount.div(ONE)
-  balanceAdjusted.preBalance = event.params.preBalance.div(ONE)
-  balanceAdjusted.postBalance = event.params.postBalance.div(ONE)
+  balanceAdjusted.amount = event.params.amount.toBigDecimal().div(ONE)
+  balanceAdjusted.preBalance = event.params.preBalance.toBigDecimal().div(ONE)
+  balanceAdjusted.postBalance = event.params.postBalance.toBigDecimal().div(ONE)
   balanceAdjusted.tradeId = event.params.tradeId
   balanceAdjusted.blockNumber = event.block.number
   balanceAdjusted.blockTimestamp = event.block.timestamp

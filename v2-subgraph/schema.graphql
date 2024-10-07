@@ -1,8 +1,9 @@
 type BalanceAdjusted @entity(immutable: true) {
   id: Bytes!
+  user: User!
+  asset: Asset!
   accountId: BigInt! # uint256
   manager: Bytes! # address
-  assetAndSubId: Bytes! # bytes32
   amount: BigInt! # int256
   preBalance: BigInt! # int256
   postBalance: BigInt! # int256
@@ -10,4 +11,26 @@ type BalanceAdjusted @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+}
+
+type User @entity {
+  id: Bytes! # address
+  balances: [UserBalance!]! @derivedFrom(field: "user")
+  balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "user")
+}
+
+type UserBalance @entity {
+  id: Bytes! # Composite key: user + asset
+  user: User!
+  asset: Asset!
+  balance: BigInt! # int256
+  lastUpdated: BigInt! # timestamp
+}
+
+type Asset @entity {
+  id: Bytes! # bytes32 (assetAndSubId)
+  asset: String!
+  subId: BigInt!
+  balances: [UserBalance!]! @derivedFrom(field: "asset")
+  balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "asset")
 }

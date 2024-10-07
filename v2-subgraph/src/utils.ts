@@ -11,7 +11,8 @@ class DecodedHash {
 }
 
 export function decodeHashWithEthers(hashHex: Bytes): DecodedHash {
-  const hashBigInt = BigInt.fromUnsignedBytes(hashHex);
+  const reversedBytes = Bytes.fromUint8Array(hashHex.reverse() as Uint8Array);
+  const hashBigInt = BigInt.fromUnsignedBytes(reversedBytes);
 
   // Extract the address
   const shiftedAddress = hashBigInt.rightShift(96); // Shift right by 96 bits

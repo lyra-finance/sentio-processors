@@ -1,0 +1,26 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: subaccounts
+    network: https://rpc.derive.xyz
+    source:
+      address: "0xE7603DF191D699d8BD9891b821347dbAb889E5a5"
+      abi: SubAccounts
+      startBlock: 843041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BalanceAdjusted
+      abis:
+        - name: SubAccounts
+          file: ./abis/SubAccounts.json
+      eventHandlers:
+        - event: BalanceAdjusted(indexed uint256,indexed address,indexed bytes32,int256,int256,int256,uint256)
+          handler: handleBalanceAdjusted
+      file: ./src/subaccounts.ts

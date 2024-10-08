@@ -27,3 +27,35 @@ export function decodeHashWithEthers(hashHex: Bytes): DecodedHash {
 
   return new DecodedHash(address, subId);
 }
+
+class OptionDetails {
+  name: string;
+  expiry: i32;
+  strike: BigInt;
+  isCall: boolean;
+
+  constructor(name: string, expiry: i32, strike: BigInt, isCall: boolean) {
+    this.name = name;
+    this.expiry = expiry;
+    this.strike = strike;
+    this.isCall = isCall;
+  }
+}
+
+export function getOptionDetails(subId: BigInt): OptionDetails {
+    const expiry = subId.bitAnd(BigInt.fromI32(0xFFFFFFFF)).toI32()
+    const strike = subId.rightShift(32).bitAnd(BigInt.fromI64(0x7FFFFFFFFFFFFFFF))
+    const isCall = subId.rightShift(95).bitAnd(BigInt.fromI32(1)).equals(BigInt.fromI32(1))
+  
+    const strikeAdjusted = strike.times(BigInt.fromString('10000000000'))
+    const optionType = isCall ? 'C' : 'P'
+    const expiryDate = new Date(expiry * 1000)
+    const formattedExpiry = `${expiryDate.getUTCFullYear()}${(expiryDate.getUTCMonth() + 1).toString().padStart(2, '0')}${expiryDate.getUTCDate().toString().padStart(2, '0')}`
+  
+    // Format strike as a whole number
+    const strikeFormatted = strikeAdjusted.div(BigInt.fromString('10000000000')).toString()
+  
+    const name = `${formattedExpiry}-${strikeFormatted}-${optionType}`
+  
+    return new OptionDetails(name, expiry, strike, isCall)
+  }

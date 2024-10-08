@@ -15,8 +15,17 @@ type BalanceAdjusted @entity(immutable: true) {
 
 type SubAccount @entity {
   id: String!
+  owner: Account! # The current owner of this subaccount
+  matchingOwner: Account # Only populated if this is owned by the matching contract
   balances: [SubAccountBalance!]! @derivedFrom(field: "subaccount")
   balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "subaccount")
+}
+
+type Account @entity {
+  id: Bytes!
+  owner: Bytes # If a LightAccount
+  subaccounts: [SubAccount!]! @derivedFrom(field: "owner")
+  depositedSubaccounts: [SubAccount!]! @derivedFrom(field: "matchingOwner")
 }
 
 type SubAccountBalance @entity {
@@ -29,8 +38,31 @@ type SubAccountBalance @entity {
 
 type Asset @entity {
   id: Bytes! # bytes32 (assetAndSubId)
-  asset: String!
+  assetContract: AssetContract!
   subId: BigInt!
+  name: String!
+  expiry: Int
+  strike: Int
+  isCall: Boolean
   balances: [SubAccountBalance!]! @derivedFrom(field: "asset")
   balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "asset")
+}
+
+
+enum AssetType {
+  Option
+  Perp
+  Spot
+  Unknown
+}
+
+type AssetContract @entity {
+  id: String!
+  address: String!
+  currency: Currency!
+  type: AssetType!
+}
+
+type Currency @entity {
+  id: String!
 }

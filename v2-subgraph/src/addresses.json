@@ -1,0 +1,22 @@
+{
+    "0xAf65752C4643E25C02F693f9D4FE19cF23a095E3" :{
+        "currency": "ETH",
+        "type": "perp"
+    },
+    "0xDBa83C0C654DB1cd914FA2710bA743e925B53086" :{
+        "currency": "BTC",
+        "type": "perp"
+    },
+    "0xF00a5bD70772A4CD9a25fa856238962eC5Ad5326" :{
+        "currency": "SOL",
+        "type": "perp"
+    },
+    "0x4BB4C3CDc7562f08e9910A0C7D8bB7e108861eB4":{ 
+        "currency": "ETH",
+        "type": "option"
+    },
+    "0xd0711b9eBE84b778483709CDe62BacFDBAE13623":{ 
+        "currency": "BTC",
+        "type": "option"
+    },
+}

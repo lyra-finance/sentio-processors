@@ -26,8 +26,8 @@ dataSources:
       eventHandlers:
         - event: BalanceAdjusted(indexed uint256,indexed address,indexed bytes32,int256,int256,int256,uint256)
           handler: handleBalanceAdjusted
-        - event: AccountCreated(indexed address,indexed uint256,indexed address)
-          handler: handleAccountCreated
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
       file: ./src/subaccounts.ts
   - kind: ethereum
     name: matching
@@ -68,6 +68,8 @@ dataSources:
       abis:
         - name: EntryPoint
           file: ./abis/EntryPoint.json
+        - name: LightAccount
+          file: ./abis/LightAccount.json
       eventHandlers:
         - event: AccountDeployed(indexed bytes32,indexed address,address,address)
           handler: handleAccountDeployed
@@ -91,4 +93,4 @@ templates:
           file: ./abis/LightAccount.json
       eventHandlers:
         - event: OwnershipTransferred(indexed address,indexed address)
-          handler: HandleOwnershipTransferred
+          handler: handleOwnershipTransferred

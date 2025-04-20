@@ -1,0 +1,137 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: subaccounts
+    network: "957"
+    source:
+      address: "0xE7603DF191D699d8BD9891b821347dbAb889E5a5"
+      abi: SubAccounts
+      startBlock: 843041
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BalanceAdjusted
+        - Subaccount
+        - SubaccountBalance
+        - Asset
+      abis:
+        - name: SubAccounts
+          file: ./abis/SubAccounts.json
+      eventHandlers:
+        - event: BalanceAdjusted(indexed uint256,indexed address,indexed bytes32,int256,int256,int256,uint256)
+          handler: handleBalanceAdjusted
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/subaccounts.ts
+  - kind: ethereum
+    name: matching
+    network: "957"
+    source:
+      address: "0xeB8d770ec18DB98Db922E9D83260A585b9F0DeAD"
+      abi: Matching
+      startBlock: 843193
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Subaccount
+        - Account
+      abis:
+        - name: Matching
+          file: ./abis/Matching.json
+      eventHandlers:
+        - event: DepositedSubAccount(indexed uint256,indexed address)
+          handler: handleDepositedSubAccount
+        - event: WithdrewSubAccount(indexed uint256)
+          handler: handleWithdrewSubAccount
+      file: ./src/matching.ts
+  - kind: ethereum
+    name: AccountFactory
+    network: "957"
+    source:
+      address: "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789"
+      abi: EntryPoint
+      startBlock: 60787
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BalanceAdjusted
+      abis:
+        - name: EntryPoint
+          file: ./abis/EntryPoint.json
+        - name: LightAccount
+          file: ./abis/LightAccount.json
+      eventHandlers:
+        - event: AccountDeployed(indexed bytes32,indexed address,address,address)
+          handler: handleAccountDeployed
+      file: ./src/smartAccounts.ts
+  # - kind: ethereum
+  #   name: TradeModule
+  #   network: "957"
+  #   source:
+  #     address: "0xB8D20c2B7a1Ad2EE33Bc50eF10876eD3035b5e7b"
+  #     abi: TradeModule
+  #     startBlock: 843193
+  #   mapping:
+  #     kind: ethereum/events
+  #     apiVersion: 0.0.7
+  #     language: wasm/assemblyscript
+  #     entities:
+  #       - Trade
+  #     abis:
+  #       - name: TradeModule
+  #         file: ./abis/TradeModule.json
+  #     eventHandlers:
+  #       - event: OrderMatched(address,uint256,uint256,bool,int256,uint256)
+  #         handler: handleOrderMatched
+  #     file: ./src/tradeModule.ts
+  # - kind: ethereum
+  #   name: RFQModule
+  #   network: "957"
+  #   source:
+  #     address: "0x9371352CCef6f5b36EfDFE90942fFE622Ab77F1D"
+  #     abi: RFQModule
+  #     startBlock: 3745265
+  #   mapping:
+  #     kind: ethereum/events
+  #     apiVersion: 0.0.7
+  #     language: wasm/assemblyscript
+  #     entities:
+  #       - Trade
+  #     abis:
+  #       - name: RFQModule
+  #         file: ./abis/RFQModule.json
+  #     eventHandlers:
+  #       - event: RFQTradeCompleted(indexed uint256,indexed uint256,(address,uint256,int256,int256)[])
+  #         handler: handleRFQTradeCompleted
+  #     file: ./src/rfqModule.ts
+  
+
+templates:
+  - name: LightAccount
+    kind: ethereum
+    network: "957"
+    source:
+      abi: LightAccount
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ./src/smartAccounts.ts
+      entities:
+        - Account
+      abis:
+        - name: LightAccount
+          file: ./abis/LightAccount.json
+      eventHandlers:
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred

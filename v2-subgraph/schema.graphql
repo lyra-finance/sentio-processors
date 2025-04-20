@@ -1,0 +1,86 @@
+type BalanceAdjusted @entity(immutable: true) {
+  id: Bytes!
+  subaccount: SubAccount!
+  asset: Asset!
+  accountId: BigInt! # uint256
+  manager: String! # address
+  amount: BigDecimal! # int256
+  preBalance: BigDecimal! # int256
+  postBalance: BigDecimal! # int256
+  tradeId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
+
+type SubAccount @entity {
+  id: String!
+  subaccountId: BigInt!
+  owner: Account! # The current owner of this subaccount
+  matchingOwner: Account # Only populated if this is owned by the matching contract
+  balances: [SubAccountBalance!]! @derivedFrom(field: "subaccount")
+  balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "subaccount")
+  takerTrades: [Trade!]! @derivedFrom(field: "taker")
+  makerTrades: [Trade!]! @derivedFrom(field: "maker")
+}
+
+type Account @entity {
+  id: String!
+  owner: String # If a LightAccount
+  subaccounts: [SubAccount!]! @derivedFrom(field: "owner")
+  depositedSubaccounts: [SubAccount!]! @derivedFrom(field: "matchingOwner")
+}
+
+type SubAccountBalance @entity {
+  id: String! # Composite key: subaccount + asset
+  subaccount: SubAccount!
+  asset: Asset!
+  balance: BigDecimal! # int256
+  lastUpdated: BigInt! # timestamp
+}
+
+type Asset @entity {
+  id: String! # (assetAndSubId)
+  assetContract: AssetContract!
+  subId: BigInt!
+  name: String!
+  expiry: BigInt
+  strike: Int
+  isCall: Boolean
+  balances: [SubAccountBalance!]! @derivedFrom(field: "asset")
+  balanceAdjustments: [BalanceAdjusted!]! @derivedFrom(field: "asset")
+  trades: [Trade!]! @derivedFrom(field: "base")
+}
+
+
+enum AssetType {
+  Option
+  Perp
+  Spot
+  Unknown
+}
+
+type AssetContract @entity {
+  id: String!
+  address: String!
+  currency: Currency!
+  assetType: AssetType!
+}
+
+type Currency @entity {
+  id: String!
+}
+
+type Trade @entity(immutable: true) {
+  id: Bytes!
+  base: Asset!
+  taker: SubAccount!
+  maker: SubAccount!
+  takerIsBid: Boolean!
+  isRFQ: Boolean!
+  amountQuote: BigDecimal!
+  amountBase: BigDecimal!
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: String!
+}
